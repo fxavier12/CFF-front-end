@@ -1,0 +1,311 @@
+body {
+    margin: 0;
+    background-image: url("../media/bg_site.png");
+}
+div,ul {
+    height: 100px;
+    width: 100%;
+    float: left;
+}
+.azul {
+
+}
+.vermelha {
+    width: 20%;
+    height: 535px;
+}
+
+/*****************************************************************/
+.verde {
+    background-color: #494949;
+    width: 60%;
+    height: 535px;
+    position: relative;
+}
+
+.galeria{
+    margin: auto;
+    width: auto;
+    height: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.foto{
+    position: absolute;
+    opacity: 0;
+    animation-name: animacao;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes animacao{
+    25%{
+        opacity: 1;
+        transform:scale(1.1,1.1);
+    }
+
+    50%{
+        opacity: 0;
+    }
+}
+
+.foto:nth-child(1){
+
+}
+.foto:nth-child(2){
+    animation-delay: 5s
+}
+.foto:nth-child(3){
+    animation-delay: 10s
+}
+.foto:nth-child(4){
+    animation-delay: 15s
+}
+.foto:nth-child(5){
+    animation-delay: 20s
+}
+
+/******************************************************/
+.laranja {
+    background-color: orange;
+    width: 20%;
+    height: 535px;
+    overflow:auto;
+}
+
+.caixaLateral{
+    background-color: snow;
+    width: 100%;
+    height: 162px;
+    border: 2px;
+    border-radius: 5px;
+    box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+}
+
+.caixaLateral a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.caixaLateral img {
+    height: inherit;
+    width: 100%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    border: 2px;
+    border-radius: 5px;
+}
+.caixaLateral h5 {
+    color: #2e3d49;
+}
+
+.caixaLateral p {
+    color: #525c65;
+}
+
+.lateralAjuste{
+    margin: 128px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+
+/*********************************************************/
+
+.amarelo {
+    background-image: url("../media/perfil.png");
+    background-size: 114px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 150px;
+    width: 20%;
+    float: right;
+}
+.cinza {
+    position: absolute;
+    top: 40%;
+    left: 35%;
+    width: 30%;
+    background-color: black;
+    height: 25%;
+}
+.container {
+    max-width: 95%;
+    height: auto;
+    margin: 0 auto;
+    float: none;
+}
+
+
+.menu li {
+    display: inline-block;
+    background-color: #BBBBBB;
+    text-indent: 0;
+    width: 15%;
+    position: relative;
+}
+.menu li a {
+    text-align: center;
+    color: black;
+    display: inline-block;
+    text-indent: 0;
+    width: 100%;
+    padding: 1em 0;
+    text-decoration: none;
+}
+.menu li a:hover {
+    background-color: #EEEEEE;
+}
+.menu {
+    z-index: 1;
+    width: 80%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 3.1em;
+    text-indent: 1em;
+    background-color: #999999;
+    text-align: left;
+}
+
+.menu li .submenu {
+    display: block;
+    -webkit-transition: all linear 0.1s;
+    -moz-transition: all linear 0.1s;
+    transition: all linear 0.1s;
+
+    opacity: 0;
+    -webkit-transform: scale(0) translateY(-100px);
+    -moz-transform: scale(0.1) translateY(-100px);
+    transform: scale(0.1) translateY(-100px);
+}
+.menu li:hover .submenu {
+    opacity: 0.9;
+    -webkit-transform: scale(1) translateY(0px);
+    -moz-transform: scale(1) translateY(0px);
+    transform: scale(1) translateY(0px);
+}
+.submenu {
+    position: absolute;
+    top: 100%;
+    right: 0%;
+}
+.submenu li {
+    display: block;
+    width: 100%;
+    background-color: #DDDDDD;
+}
+
+.submenu ul li ul{
+    position: relative;
+}
+
+.submenu ul li ul li{
+    right: -140px;
+    top: 0px;
+}
+
+
+/********************************  IMAGEM ******************************/
+.menudiv{
+    width: 100%;
+    height: 3.1em;
+}
+
+
+/********************************  IMAGEM ******************************/
+
+
+.imagen{
+    height: 100%;
+    margin: 0% 0% 0% 24%;
+}
+
+.upimg{
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    height: 123px;
+    position: relative;
+    height: 100%;
+    width: -moz-available;
+}
+
+
+/*CSS para formatar o menu nav e entre outros */
+* { margin: 0; padding: 0; }
+
+#nav { margin: 0; padding: 0; float: left; }
+#nav li { list-style: none; background: #fff; width: 250px; border-bottom: 1px solid #666; }
+#nav li a { display: block; padding: 24px; border-left: 4px solid #444; text-decoration: none; box-shadow: 2px 2px 5px #ccc; color: #555; }
+#nav li a:hover { border-left: 4px solid #069; background: #9C9C9C; }
+#nav li ul { display: none; }
+#nav li:hover ul { display: block; }
+#nav li:hover ul li { background: #333; }
+#nav li:hover ul li a { color: #ccc; }
+#nav li:hover ul li a:hover { background: #222; border-left: 4px solid #900; }
+
+
+
+/********************************  Usuario ******************************/
+.menus li {
+    display: inline-block;
+
+    text-indent: 0;
+    width: 100%;
+    position: relative;
+}
+.menus li a {
+    text-align: center;
+    color: black;
+    display: inline-block;
+    text-indent: 0;
+    width: 100%;
+    padding: 1em 0;
+    text-decoration: none;
+}
+.menus li a:hover {
+    background-color: #EEEEEE;
+}
+.menus {
+    z-index: 1;
+    width: 80%;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    height: 3.1em;
+    text-indent: 1em;
+    text-align: left;
+}
+.menus li .submenus {
+    display: block;
+    -webkit-transition: all linear 0.1s;
+    -moz-transition: all linear 0.1s;
+    transition: all linear 0.1s;
+
+    opacity: 0;
+    -webkit-transform: scale(0) translateY(-100px);
+    -moz-transform: scale(0.1) translateY(-100px);
+    transform: scale(0.1) translateY(-100px);
+}
+.menus li:hover .submenus {
+    opacity: 0.9;
+    -webkit-transform: scale(1) translateY(0px);
+    -moz-transform: scale(1) translateY(0px);
+    transform: scale(1) translateY(0px);
+}
+.submenus {
+    position: absolute;
+    top: 100%;
+    right: 0%;
+}
+.submenus li {
+    display: block;
+    width: 100%;
+
+}
+
+.divmenus{
+    height: 40px;
+    width: 100%;
+    padding: 115px 0px 0px 0px;
+}

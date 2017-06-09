@@ -1,0 +1,450 @@
+body{
+	background-image: url("../media/bg_site.png");
+}
+
+
+.caixaGeral{
+	max-width: 88%;
+	height: auto;
+	margin: 0 auto;
+	float: none;
+}
+
+.caixaCima{
+	height: 83px;
+	width: 100%;
+	float: left;
+	margin: 0px 0px 4px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.caixaLateral{
+	background-color: snow;
+	width: 30.4%;
+	height: 145px;
+	float: right;
+	border: 2px;
+	border-radius: 5px;
+	box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+}
+
+.caixaLateral a {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+.caixaLateral img {
+	width: auto;
+	margin: 0px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+	border: 2px;
+	border-radius: 5px;
+}
+.caixaLateral h5 {
+	color: #2e3d49;
+}
+
+.caixaLateral p {
+	color: #525c65;
+}
+
+.lateralAjuste{
+	margin: 24px 0px 0px 0px;
+	padding: 0px 0px 0px 0px;
+}
+
+.texto{
+	float: right;
+	display: inline-block;
+	width: 56%;
+	position: relative;
+	top: -73%;
+	transform: translateY(94%);
+	margin: 0;
+	color: blue;
+	font-size: 20px;
+	font-family: "Open Sans", sans-serif;
+}
+
+.tamanho{
+    padding: 0px 0px 0px 0px;
+    margin: 0px 0px 9px 0px;
+}
+
+ .azul{
+    color: #02b3e4 ;
+}
+
+.roxo {
+    color: #a951ed;
+}
+
+.vermelho {
+    color: #ff5483;
+}
+/*  CLASS HEADER   */
+.header{
+	max-width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+/* */
+
+/*CSS para formatar o menu nav e entre outros */
+
+#menu ul li{
+    display: inline;
+}
+
+nav#menu{
+    display: block;
+    float: right;
+    margin: -12px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+}
+nav a {
+	text-decoration: none; 
+}
+
+.conf{
+    border: 2px;
+    border-radius: 5px;
+    background-color: #02b3a3;
+}
+nav#menu li{
+    display: inline-block;
+    padding: 9px;
+    margin: 3px;
+    color: white;
+}
+nav#menu a{
+    color: white;
+}
+
+.imagem{
+    margin: -36px 0px 0px -94px;
+    padding: 0px 0px 0px 0px;
+    height: 123px;
+    color: white;
+}
+
+.caixaudacity{
+	background-image: url("../media/udacity_tranparente.png");
+    height: 47px;
+    width: 120px;
+    margin: 17px 75px 0px 56px;
+    padding: 0px 0px 0px 61px;
+    float: left;
+
+}
+
+.visivel{
+	/*visibility: hidden;*/
+	visibility: visible;
+
+}
+
+.visivelboton{
+	visibility: visible;
+}
+
+
+
+/************************ ICONE MENU ************************************/
+.iconevisivel{
+	visibility: hidden;
+	float: left;
+}
+
+
+#check{
+	display: none;
+}
+#icone{
+	cursor: pointer;
+	padding: 15px;
+	position: absolute;
+	z-index: 1;
+}
+
+
+.barra{
+	background-color: #1C262F;
+	height: 100%;
+	width: 300px;
+	position: absolute;
+	z-index: 999999;
+	transition: all .2s linear;
+	left: -300px;
+	margin: 47px 0px 0px 0px;
+}
+
+nav#icone{
+	width: 100%;
+	position: inherit;
+	top: 60px;
+}
+
+.link{
+	background-color: #494950;
+	padding: 29px;
+	font-family: 'Arial';
+	font-size: 12pt;
+	transition: all .2s linear;
+	color: #f4f4f9;
+}
+
+.link:hover{
+	color: #525c65;
+}
+
+#check:checked ~ .barra{
+	transform: translateX(300px);
+}
+
+/************************ PLOTAR VIDEO ************************************/
+.caixaVideo{
+	
+	width: 65.5%;
+	height: 480px;
+	float: left;
+	border: 2px;
+	border-radius: 5px;
+	box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+	
+}
+
+video{
+     display: inline-block;
+}
+video.video_responsivel{
+    height: 100%;
+    width: 100%;
+    /*min-width: 100%;
+    min-height: 100%;*/
+    border: 2px;
+    border-radius: 5px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+
+}
+
+.sobrepor_video {
+    float: left;
+    display: block;
+    margin-right: 1.69492%;
+    width: 100%;
+    position: relative;
+    top: -51%;
+    transform: translateY(-50%);
+    margin: 0 ;
+    text-align: center;
+    color: white;
+    font-size: x-large;
+    font-family: "Open Sans", sans-serif;
+
+}
+
+.texto__sobrepor {
+                margin-bottom: 0.75rem;
+            }
+.cor {
+                color: #fff ;
+            }
+
+
+
+/************************ COMECO DOS MEDIA ************************************/
+/************************ COMECO DOS MEDIA ************************************/
+/************************ COMECO DOS MEDIA ************************************/
+
+
+
+@media screen and (max-width: 1150px){
+	.visivel{
+		visibility: hidden;
+	}
+
+	nav#menu{
+		margin: -9px 0px 0px 0px;
+	}
+}
+
+/* ***********************************************8  */
+@media screen and (max-width: 1145px){
+	.texto{
+		width: 45%;
+		top: -61%;
+		font-size: 16px;
+	}
+
+	
+}
+
+
+@media screen and (max-width: 1137px){
+
+	nav#menu{
+		margin: -10px 0px 0px 0px;
+	}
+
+	.caixaudacity {
+    	margin: 17px 0px 0px 56px;   
+	}
+}
+
+@media screen and (max-width: 998px){
+
+	nav#menu{
+		margin: -70px 0px 0px 0px;
+	}
+
+}
+
+
+/* ******************** MEDIA QUERY PARA TABLET ************8  */
+
+@media screen and (max-width: 992px){
+	 .caixaVideo{
+	 	width: 100%;
+	 	display: inline;
+	 	margin-left: -8%;
+		padding-right: 16%;
+	 }
+
+	 .texto {
+	    float: right;
+	    display: inline-block;
+	    width: 38%;
+	    position: relative;
+	    top: 23%;
+	    transform: translateY(6%);
+	    margin: 0;
+	    color: blue;
+	    font-size: 12px;
+	    font-family: "Open Sans", sans-serif;
+	}
+
+	.caixaLateral .lateralAjuste {
+	    margin: 24px 15px 0px 0px;
+	    padding: 0px 0px 0px 0px;
+	}
+	.caixaLateral {
+	    background-color: snow;
+	    width: 30.4%;
+	    height: 145px;
+	    float: right;
+	    border: 2px;
+	    border-radius: 5px;
+	    box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+	    margin: 24px 15px 0px 0px;
+	    padding: 0px 0px 0px 0px;
+	}
+
+	nav#menu{
+		margin: -70px 0px 0px 0px;
+	}
+	
+}
+
+
+/* ******************** MEDIA QUERY PARA CELULAR ************8  */
+
+
+@media screen and (max-width: 803px){
+	
+	body{
+     height: 300px;
+     width: auto;
+	 }
+
+	 .caixaVideo{
+		width: 100%;
+	}
+	 
+	 .sobrepor_video{
+	     font-size: x-small;
+	 }
+	 video.video_responsivel{
+	     width: 100%;
+	     border: 2px;
+	     border-radius: 5px;
+	     margin: 0px 0px 0px 0px;
+	     padding: 0px 0px 0px 0px;
+	     box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+	 }
+
+	.caixaLateral{
+		width: 100%;
+		margin: 36px 0px 0px 0px;
+		padding: 0px 0px 0px 0px;
+	}
+
+	.texto{
+		width: 73%;
+		transform: translateY(141%);
+		top: -79%;
+		font-size: 18px;
+	}
+
+	.visivelboton{
+		visibility: hidden;
+	}
+	.iconevisivel{
+		visibility: visible;
+	}
+
+	
+}
+/* ******************************************************** */
+@media screen and (max-width: 768px){
+
+ body{
+     height: 300px;
+     width: auto;
+ }
+
+ .caixa{
+     width: 100%;
+ }
+ .sobrepor_video{
+     font-size: x-small;
+ }
+ video.video_responsivel{
+     width: 100%;
+     border: 2px;
+     border-radius: 5px;
+     margin: 0px 0px 0px 0px;
+     padding: 0px 0px 0px 0px;
+     box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.37);
+ }
+
+
+}
+
+
+/* MEDIA QUERY MENO PARA CELULAR */
+
+@media screen and (max-width: 575px){
+	.texto {
+	    width: 65%;
+	}
+}
+
+@media screen and (max-width: 517px){
+	.texto {
+	    width: 57%;
+	}
+}
+
+@media screen and (max-width: 517px){
+	.texto {
+	    width: 46%;
+	    top: -77%;
+	    font-size: 15px;
+	}
+}
