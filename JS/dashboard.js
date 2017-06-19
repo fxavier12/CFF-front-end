@@ -3,7 +3,7 @@ window.onload = function() {
   var logado = getCookie("logado");
   if(logado != "true"){
   	//se o usuario nao estiver logado redireciona para pagina principal
-  	window.location = "/";
+  	window.location = "index.html";
   }
 
 
