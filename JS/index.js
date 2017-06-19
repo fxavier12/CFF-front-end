@@ -24,7 +24,7 @@ function login(){
                       document.cookie = "username="+data.nome;
                       document.cookie = "id="+data.id;
                       document.cookie = "email="+data.email;
-                      window.location = "/app.html";
+                      window.location = "app.html";
                       $( "#userarea" ).css( "display", "block" );
             
               }).fail(function(data) {
