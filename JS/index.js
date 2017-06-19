@@ -1,6 +1,7 @@
+var logado = false;
+
 window.onload = function() {
-  
-  
+  $( "#homearea" ).css( "display", "block" );
 };
 
 function closealert(){
@@ -18,13 +19,19 @@ function login(){
   //requisicao POST
           $.post( "https://cffbackend.herokuapp.com/login", { email: params.email , senha: params.senha })
               .done(function( data ) {
-                     console.log("login efetuado");
+                      console.log(data);
+                      document.cookie = "logado=true";
+                      document.cookie = "username="+data.nome;
+                      document.cookie = "id="+data.id;
+                      document.cookie = "email="+data.email;
+                      window.location = "/app.html";
+                      $( "#userarea" ).css( "display", "block" );
             
               }).fail(function(data) {
                   
                 $( "#emailalert" ).css( "display", "block" );
                 $( "#emailalert" ).empty()
-                $( "#emailalert" ).append("Este email ja esta em uso " );
+                $( "#emailalert" ).append(data.responseJSON.mensagem );
                 $( "#emailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
                 
                   

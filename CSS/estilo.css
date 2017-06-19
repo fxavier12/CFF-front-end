@@ -66,6 +66,50 @@ h1 {
 .conteudo {
   width:70%;
   margin:auto;
+  display: none;
+}
+.conteudo2 {
+  width:79%;
+  height: 100%;
+  margin-left: 2px;
+  margin-top: 2px;
+  float: left;
+  background-color: green;
+  border-radius: 5px;
+}
+
+.dash-menu {
+  width: 20%;
+  height: 100%;
+  background-color: #004d1a;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  float: left;
+  margin-top: 2px;
+}
+.dash-menu ul{
+   padding: 0;
+   margin: 0;
+}
+.dash-menu li{
+  list-style-type: none;
+  background-color: blue;
+  width: 98%;
+  margin: auto;
+  height: 5%;
+  margin-top: 1%;
+  text-align: center;
+  padding-top: 5px;
+}
+.dash-menu li:hover{
+  background-color: green;
+
+}
+
+.conteudo-interno{
+  width: 80%;
+  margin: auto;
+  display: none;
 }
 .login{
   display:none;
