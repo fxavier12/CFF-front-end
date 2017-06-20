@@ -1,0 +1,43 @@
+
+.tabela{
+    border-collapse: collapse;
+    width: 100%;
+    color: #9e9e9e;
+}
+	
+.table-row-despesas{
+	display: none;
+}
+.table-row-receitas{
+	display: none;
+}
+.tabela th, td {
+   color: white;
+    padding: 12px;
+
+}
+.tabela td{
+	text-align: center;
+}
+
+.tabela tr{
+	width: 100%;
+}
+
+
+
+.tabela th {
+	background-color:   #004d1a;
+}
+.tabela tr{
+	background-color: #009933;
+}
+
+.tabela tr.selecionado {
+	background-color: red;
+}
+
+.tabela tfoot tr{
+	background-color: #004d1a;
+}
+.tabela tr:nth-child{background-color: black}

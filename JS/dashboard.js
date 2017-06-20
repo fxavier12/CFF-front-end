@@ -1,3 +1,6 @@
+//variaveis globais
+var despesaSelecionada = {};
+var receitaSelecionada = {};
 //funcoes do menu 
 window.onload = function() {
   var logado = getCookie("logado");
@@ -7,18 +10,66 @@ window.onload = function() {
   }
 
 
-  $( "#mes" ).text(getNameMonth());
+  $( "#mes" ).text("Financas do mes de "+getNameMonth());
   $( "#username" ).text(getCookie("username"));
   $( "#username-perfil" ).text(getCookie("username"));
-  $( "#contas-saudacao" ).text("Ola "+getCookie("username"));
   $( "#email-perfil" ).text(getCookie("email"));
   $( "#home" ).css( "display", "block" );
-
-
+  $( "#botao-esconder-despesas").css( "display", "none" );  
+  $( "#botao-excluir-despesas").css( "display", "none" );  
+  $( "#botao-editar-despesas").css( "display", "none" );  
+  $( "#botao-esconder-receitas").css( "display", "none" );  
+  $( "#botao-desfazer-receitas").css( "display", "none" );  
 
   
+  //carregando contas
+  loadDespesas();
+  loadReceitas();
+
+  
+
 };
 
+//gera o grafico
+function gerarGraficoHome(receita,despesa,saldo){
+	//gerando grafico homepage 
+   var options = {
+        responsive:true,
+        scales: {
+	    xAxes: [{
+	    			display: false
+	               
+	            }],
+	    yAxes: [{
+	                gridLines: {
+	                    display:true
+	                }   
+	            }]
+	    }
+	    };
+    Chart.defaults.global.legend.display = false;
+
+    var data = {
+        labels: ["Receita", "Despesa", "Saldo"],
+        datasets: [
+            {
+                data: [receita,despesa,saldo],
+                backgroundColor : ['rgba(35, 234, 35,1)','rgba(255, 40, 40,1)','rgba(40, 147, 255,1)']
+            }
+        ]
+    };                
+
+	
+	$('#GraficoBarra').remove(); // this is my <canvas> element
+    $('#GraficoBarra-container').prepend("<canvas id='GraficoBarra'></canvas>");
+    var ctx = document.getElementById("GraficoBarra").getContext("2d");
+	var myBarChart = new Chart(ctx, {
+	type: 'bar',
+	data: data,
+	options: options
+});
+
+}
 function getNameMonth(){
 	//get courrent mounth
 	var data = new Date();
@@ -130,12 +181,6 @@ function abrirContas(){
 	$( "#perfil" ).css( "display", "none");
 	$( "#contas" ).css( "display", "block");
 
-
-	loadDespesas();
-	loadReceitas();
-
-
-
 };
 
 function abrirRelatorios(){
@@ -188,6 +233,56 @@ function abrirDespesaCadastrada(){
 
 };
 
+function detalharDespesas(){
+	$(".table-row-despesas").css("display","table-row");
+	$( "#botao-esconder-despesas").css( "display", "inline-block" );
+	$( "#botao-detalhar-despesas").css( "display", "none" );
+
+
+};
+
+function resumirDespesas(){
+	$(".table-row-despesas").css("display","none");
+	$( "#botao-esconder-despesas").css( "display", "none" );
+	$( "#botao-detalhar-despesas").css( "display", "inline-block" );
+	desSelecionarDespesa();
+	
+
+};
+function excluirReceita(){
+	console.log("excluir "+receitaSelecionada.id.textContent);
+};
+
+function editarReceita(){
+	console.log("editar "+receitaSelecionada.id.textContent );
+};
+
+function excluirDespesa(){
+	console.log("excluir "+despesaSelecionada.id.textContent);
+};
+
+function editarDespesa(){
+	console.log("editar "+despesaSelecionada.id.textContent );
+};
+
+function detalharReceitas(){
+	$(".table-row-receitas").css("display","table-row");
+	$( "#botao-esconder-receitas").css( "display", "inline-block" );
+	$( "#botao-detalhar-receitas").css( "display", "none" );
+	$( "#botao-editar-despesas").css( "display", "none" );  
+    $( "#botao-excluir-despesas").css( "display", "none" );  
+    
+
+};
+
+function resumirReceitas(){
+	$(".table-row-receitas").css("display","none");
+	$( "#botao-esconder-receitas").css( "display", "none" );
+	$( "#botao-detalhar-receitas").css( "display", "inline-block" );
+
+
+};
+
 //funcoes da aplicacao
 function cadastrarReceita(){
 	var params= {};
@@ -234,6 +329,43 @@ function cadastrarDespesa(){
 	});
 
 };
+function desSelecionarDespesa(){
+	var linhas = $("#table_despesas > tbody > tr");	
+	for(i = 0 ; i < linhas.length ;i++){
+		linhas[i].className = "table-row-despesas" ;
+	}
+	$( "#botao-editar-despesas").css( "display", "none" );  
+    $( "#botao-excluir-despesas").css( "display", "none" ); 
+    $( "#botao-desfazer-despesas").css( "display", "none" );
+};
+function selecionarDespesa(row){
+	desSelecionarDespesa();
+	despesaSelecionada.id = row.firstChild.firstChild;
+	row.className += " selecionado"; 
+	$( "#botao-editar-despesas").css( "display", "inline-block" );  
+    $( "#botao-excluir-despesas").css( "display", "inline-block" ); 
+    $( "#botao-desfazer-despesas").css( "display", "inline-block" ); 
+    
+};
+
+function desSelecionarReceita(){
+	var linhas = $("#table_receitas > tbody > tr");	
+	for(i = 0 ; i < linhas.length ;i++){
+		linhas[i].className = "table-row-receitas" ;
+	}
+	$( "#botao-editar-receitas").css( "display", "none" );  
+    $( "#botao-excluir-receitas").css( "display", "none" ); 
+    $( "#botao-desfazer-receitas").css( "display", "none" );
+};
+function selecionarReceita(row){
+	desSelecionarReceita();
+	receitaSelecionada.id = row.firstChild.firstChild;
+	row.className += " selecionado"; 
+	$( "#botao-editar-receitas").css( "display", "inline-block" );  
+    $( "#botao-excluir-receitas").css( "display", "inline-block" ); 
+    $( "#botao-desfazer-receitas").css( "display", "inline-block" ); 
+    
+};
 
 function loadDespesas(){
 
@@ -247,10 +379,12 @@ function loadDespesas(){
    		      var total = 0;
    		      for(var i = 0 ; i < data.length ;i++){
    		      	total += data[i].valor;
-   		      	$('#table_despesas > tbody').append("<tr><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
+   		      	$('#table_despesas > tbody').append("<tr class='table-row-despesas' onclick='selecionarDespesa(this)'><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
         	   }
 
         	   $( "#total_despesas" ).text(total);
+        	   $( "#home-despesa" ).text("Despesa : "+total);
+
 			  calcularSaldo();
 
 	  	}).fail(function(data) {
@@ -272,9 +406,10 @@ function loadReceitas(){
    		      $('#table_receitas > tbody').empty();
    		      for(var i = 0 ; i < data.length ;i++){
 	      			total += data[i].valor;   
-	   		      	$('#table_receitas > tbody').append("<tr><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
+	   		      	$('#table_receitas > tbody').append("<tr  class='table-row-receitas' onclick='selecionarReceita(this)' ><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
         	 }
         	  $( "#total_receitas" ).text(total);
+        	  $( "#home-receita" ).text("Receita : "+total);
    		      calcularSaldo();
 	  	}).fail(function(data) {
   
@@ -291,6 +426,8 @@ function calcularSaldo(){
 	var saldo = receitas - despesas;
 	console.log(saldo);
 	$("#saldo").text("Saldo R$: "+saldo);
+	$( "#home-saldo" ).text("Saldo : "+saldo);
+	gerarGraficoHome(receitas,despesas,saldo);
 }
 function logOut(){
 	document.cookie = "logado=false";

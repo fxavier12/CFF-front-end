@@ -2,8 +2,13 @@
    <head>
       <meta charset="utf-8"/>
       <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+      <link rel="stylesheet" type="text/css" href="CSS/tabela.css">
+      <link rel="stylesheet" type="text/css" href="CSS/graficos.css">
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="JS/dashboard.js"></script>
+
    </head>
    <body>
       <div class="header">
@@ -24,11 +29,30 @@
       <div class="conteudo2">
          <!--Conteudo da pagina principal-->
          <div class="conteudo-interno" id="home" >
-               <h2>Suas Financas</h2>
-               <p>Voce nao cadastrou nenhuma receita ou despesa</p>
-               <p>Comece AGORA!</p>
-               <button onclick="abrirCadastroReceita()">Cadastrar Receita</button>
-               <button  onclick="abrirCadastroDespesa()">Cadastrar Despesa</button>
+            <h1>Financas desse Mes</h1>
+            <div class="linha">
+               <div class="grafico-home" id="GraficoBarra-container">
+                     <canvas id="GraficoBarra"></canvas>
+                     <div class="label verde"><p>Receita</p></div>
+                     <div class="label vermelha"><p>Despesa</p></div>
+                     <div class="label azul"><p>Saldo</p></div>
+                     <br>
+               </div>
+                <div class="grafico-home-detalhes">
+                  <p>Detalhes:</p>
+                  <p id="home-receita"></p>
+                  <p id="home-despesa"></p>
+                  <p id="home-saldo"></p>
+                </div>
+            </div>
+            <div class="linha">
+                <div class="card esquerda" onclick="abrirContas()">
+                    <p>Ver Contas</p>
+                </div>
+                <div class="card direita" onclick="abrirRelatorios()">
+                    <p>Ver Relatorios</p>
+                </div>
+            </div>
          </div>
 
          <!--Conteudo da pagina de Perfil-->
@@ -44,18 +68,17 @@
 
          <!--Conteudo da pagina de Contas do mes-->
          <div class="conteudo-interno" id="contas" >
-               <h2 id="contas-saudacao"></h2>
-                <p>Financas do mes de </p>
                <p id= "mes"></p>
                <p id= "saldo"></p>
                <p>Despesas</p>
-               <table id="table_despesas">
+               <table class="tabela" id="table_despesas">
 
                   <thead>
-                     <tr>
-                        <th>Descricao</th>
+                     <tr class='table-row-despesas' >
+                        <th style=" border-top-left-radius: 5px;">Id</th>
+                         <th >Descricao</th>
                         <th>Vencimento</th>
-                        <th>Valor</th>
+                        <th  style=" border-top-right-radius: 5px;" >Valor</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -63,20 +86,31 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                       <td>Total</td>
+                       <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
                        <td></td>
-                       <td id="total_despesas"></td>
+                        <td></td>
+                       <td id="total_despesas" style=" border-bottom-right-radius: 5px;
+                       border-top-right-radius: 5px;"></td>
                     </tr>
                    </tfoot>
                </table>
-               <button  onclick="abrirCadastroDespesa()">Cadastrar Despesa</button>
+               <br>
+              <button id ="botao-detalhar-despesas" onclick="detalharDespesas()">Ver Detalhes</button>
+              <button id ="botao-esconder-despesas" onclick="resumirDespesas()">Esconder</button>
+
+               <button  onclick="abrirCadastroDespesa()">Cadastrar</button>
+               <button id ="botao-excluir-despesas" onclick="excluirDespesa()">Excluir</button>
+               <button id ="botao-editar-despesas" onclick="editarDespesa()">Editar</button>
+
+               <button id ="botao-desfazer-despesas" onclick="desSelecionarDespesa()">Desfazer Selecao</button>
                 <p>Receitas</p>
-               <table id="table_receitas">
+               <table class="tabela" id="table_receitas">
                  <thead>
-                     <tr>
-                        <th>Descricao</th>
+                     <tr class='table-row-receitas' >
+                        <th style=" border-top-left-radius: 5px;">Id</th>
+                         <th >Descricao</th>
                         <th>Vencimento</th>
-                        <th>Valor</th>
+                        <th style=" border-top-right-radius: 5px;">Valor</th>
                      </tr>
                   </thead>
                   <tbody>
@@ -84,14 +118,20 @@
                   </tbody>
                   <tfoot>
                     <tr>
-                       <td>Total</td>
+                       <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
                        <td></td>
-                       <td id="total_receitas"></td>
+                       <td></td>
+                       <td style=" border-bottom-right-radius: 5px;border-top-right-radius: 5px" id="total_receitas"></td>
                     </tr>
                    </tfoot>
                </table>
-               <br><br>
-               <button onclick="abrirCadastroReceita()">Cadastrar Receita</button>
+               <br>
+               <button id ="botao-detalhar-receitas" onclick="detalharReceitas()">Ver Detalhes</button>
+               <button id ="botao-esconder-receitas" onclick="resumirReceitas()">Esconder</button>
+               <button onclick="abrirCadastroReceita()">Cadastrar</button>
+               <button id ="botao-excluir-receitas" onclick="excluirReceita()">Excluir</button>
+               <button id ="botao-editar-receitas" onclick="editarReceita()">Editar</button>
+               <button id ="botao-desfazer-receitas" onclick="desSelecionarReceita()">Desfazer Selecao</button>
                
          </div>
 
