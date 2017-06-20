@@ -4,245 +4,16 @@
       <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
       <link rel="stylesheet" type="text/css" href="CSS/tabela.css">
       <link rel="stylesheet" type="text/css" href="CSS/graficos.css">
-
       <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="JS/dashboard.js"></script>
-
    </head>
    <body>
-      <div class="header">
-         <h1>Sistema de finança fácil</h1>
-         <p id="username" ></p>
-      </div>
-      <div class="dash-menu">
-         <ul>
-            <li onclick="abrirHome()">Home</li>
-            <li onclick="abrirContas()">Contas  </li>
-            <li onclick="abrirRelatorios()">Relatorios</li>
-            <li onclick="abrirMetas()">Metas</li>
-            <li onclick="abrirPerfil()">Perfil</li>
-            <li onclick="logOut()">Sair</li>
-
-         </ul>
-      </div>
-      <div class="conteudo2">
-         <!--Conteudo da pagina principal-->
-         <div class="conteudo-interno" id="home" >
-            <h1>Financas desse Mes</h1>
-            <div class="linha">
-               <div class="grafico-home" id="GraficoBarra-container">
-                     <canvas id="GraficoBarra"></canvas>
-                     <div class="label verde"><p>Receita</p></div>
-                     <div class="label vermelha"><p>Despesa</p></div>
-                     <div class="label azul"><p>Saldo</p></div>
-                     <br>
-               </div>
-                <div class="grafico-home-detalhes">
-                  <p>Detalhes:</p>
-                  <p id="home-receita"></p>
-                  <p id="home-despesa"></p>
-                  <p id="home-saldo"></p>
-                </div>
-            </div>
-            <div class="linha">
-                <div class="card esquerda" onclick="abrirContas()">
-                    <p>Ver Contas</p>
-                </div>
-                <div class="card direita" onclick="abrirRelatorios()">
-                    <p>Ver Relatorios</p>
-                </div>
-            </div>
-         </div>
-
-         <!--Conteudo da pagina de Perfil-->
-         <div class="conteudo-interno" id="perfil" >
-               <h2>Seu Perfil </h2>
-               <p id="username-perfil"></p>
-               <p id="email-perfil"></p>
-               <p>Nesta area voce pode editar seu perfil</p>
-               <button onclick="">Alterar Nome</button>
-               <button onclick="">Alterar Foto</button>
-               <button  onclick="">Alterar Senha </button>
-         </div>
-
-         <!--Conteudo da pagina de Contas do mes-->
-         <div class="conteudo-interno" id="contas" >
-               <p id= "mes"></p>
-               <p id= "saldo"></p>
-               <p>Despesas</p>
-               <table class="tabela" id="table_despesas">
-
-                  <thead>
-                     <tr class='table-row-despesas' >
-                        <th style=" border-top-left-radius: 5px;">Id</th>
-                         <th >Descricao</th>
-                        <th>Vencimento</th>
-                        <th  style=" border-top-right-radius: 5px;" >Valor</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                       <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
-                       <td></td>
-                        <td></td>
-                       <td id="total_despesas" style=" border-bottom-right-radius: 5px;
-                       border-top-right-radius: 5px;"></td>
-                    </tr>
-                   </tfoot>
-               </table>
-               <br>
-              <button id ="botao-detalhar-despesas" onclick="detalharDespesas()">Ver Detalhes</button>
-              <button id ="botao-esconder-despesas" onclick="resumirDespesas()">Esconder</button>
-
-               <button  onclick="abrirCadastroDespesa()">Cadastrar</button>
-               <button id ="botao-excluir-despesas" onclick="excluirDespesa()">Excluir</button>
-               <button id ="botao-editar-despesas" onclick="editarDespesa()">Editar</button>
-
-               <button id ="botao-desfazer-despesas" onclick="desSelecionarDespesa()">Desfazer Selecao</button>
-                <p>Receitas</p>
-               <table class="tabela" id="table_receitas">
-                 <thead>
-                     <tr class='table-row-receitas' >
-                        <th style=" border-top-left-radius: 5px;">Id</th>
-                         <th >Descricao</th>
-                        <th>Vencimento</th>
-                        <th style=" border-top-right-radius: 5px;">Valor</th>
-                     </tr>
-                  </thead>
-                  <tbody>
-                     
-                  </tbody>
-                  <tfoot>
-                    <tr>
-                       <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
-                       <td></td>
-                       <td></td>
-                       <td style=" border-bottom-right-radius: 5px;border-top-right-radius: 5px" id="total_receitas"></td>
-                    </tr>
-                   </tfoot>
-               </table>
-               <br>
-               <button id ="botao-detalhar-receitas" onclick="detalharReceitas()">Ver Detalhes</button>
-               <button id ="botao-esconder-receitas" onclick="resumirReceitas()">Esconder</button>
-               <button onclick="abrirCadastroReceita()">Cadastrar</button>
-               <button id ="botao-excluir-receitas" onclick="excluirReceita()">Excluir</button>
-               <button id ="botao-editar-receitas" onclick="editarReceita()">Editar</button>
-               <button id ="botao-desfazer-receitas" onclick="desSelecionarReceita()">Desfazer Selecao</button>
-               
-         </div>
-
-          <!--Conteudo da pagina de relatorios-->
-         <div class="conteudo-interno" id="relatorios" >
-               <h2>Relatorio </h2>
-               <p>Relatorio Completo do mes de Junho</p>
-               <p>conteudo?????????????!</p>
-         </div>
-
-          <!--Conteudo da pagina de metas-->
-         <div class="conteudo-interno" id="metas" >
-               <h2>Metas </h2>
-               <p>conteudo?????????????!</p>
-               <p>conteudo?????????????!</p>
-               <p>conteudo?????????????!</p>
-
-         </div>
-
-
-         <!--Cadastro de despesas-->
-         <div class="conteudo-interno" id="cad-despesa" >
-               <h2>Cadastro de Despesa</h2>
-         
-            <form onsubmit="return false">
-               
-               <div class="form-item">
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="depesa-descricao">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="text"  id= "despesa-descricao" placeholder="descricao" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-valor">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="number"  id= "despesa-valor" placeholder="0.00" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-data">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="date"  id= "despesa-data" placeholder="?" required/>
-                     </div>
-                  </div>
-                   <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-categoria">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <select id="despesa-categoria">
-                             <option value="Moradia">Moradia</option>
-                             <option value="Lazer">Lazer</option>
-                             <option value="Saude">Saude</option>
-                             <option value="Formacao">Formacao</option>
-                        </select>
-                     </div>
-                  </div>
-                   <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="submit" class="btn-entrar" onclick="cadastrarDespesa()"  value="Salvar">    </input>
-                     </div>
-                  </div>
-                  <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="button" onclick="abrirHome()" class="btn-entrar" value="Voltar">    </input>
-                     </div>
-                  </div>
-                 
-               </div>
-            </form>
-      
-         </div>
-          <!--despesa cadastrada com sucesso-->
-         <div class="conteudo-interno" id="cad-despesa-sucess" >
-            <h1>A despesa foi cadastrada com sucesso!</h1>
-            <p>Escolha uma Opcao</p>
-            <button onclick="abrirCadastroDespesa()">Cadastrar outra</button>
-            <button onclick="abrirCadastroReceita()">Cadastrar receita</button>
-            <button onclick="abrirContas()">Ver minhas contas</button>
-
-         </div>
-
+       <div class="absolute" onclick="console.log('oii')" id="block">
          <!--cadastro de Receitas -->
-         <div class="conteudo-interno" id="cad-receita" >
-               <h2>Cadastro de Receita</h2>
-         
+         <div class="pop-up" id="cad-receita" >
+            <h2>Cadastro de Receita</h2>
             <form onsubmit="return false">
-               
                <div class="form-item">
                   <div class="form-item interno">
                      <div class="bordaicone">
@@ -280,7 +51,7 @@
                         <input type="date"  id= "receita-data" placeholder="?" required/>
                      </div>
                   </div>
-                   <div class="form-item interno">
+                  <div class="form-item interno">
                      <div class="bordaicone">
                         <label for="receita-categoria">
                            <svg width="90%" height="90%" class="icon">
@@ -290,15 +61,14 @@
                      </div>
                      <div class="inputclass">
                         <select  id="receita-categoria">
-                             <option value="Moradia">Moradia</option>
-                             <option value="Lazer">Lazer</option>
-                             <option value="Saude">Saude</option>
-                             <option value="Formacao">Formacao</option>
+                           <option value="Moradia">Moradia</option>
+                           <option value="Lazer">Lazer</option>
+                           <option value="Saude">Saude</option>
+                           <option value="Formacao">Formacao</option>
                         </select>
                      </div>
                   </div>
-                  
-                    <div class="form-item">
+                  <div class="form-item">
                      <div class="form-item interno">
                         <input type="submit" class="btn-entrar" onclick="cadastrarReceita()"  value="Salvar">    </input>
                      </div>
@@ -310,18 +80,219 @@
                   </div>
                </div>
             </form>
-      
          </div>
-         <!--receita cadastrada com sucesso-->
-         <div class="conteudo-interno" id="cad-receita-sucess" >
-            <h1>A receita foi cadastrada com sucesso!</h1>
-            <p>Escolha uma Opcao</p>
-            <button onclick="abrirCadastroReceita()">Cadastrar outra</button>
-            <button onclick="abrirCadastroDespesa()">Cadastrar despesa</button>
-            <button onclick="abrirContas()">Ver minhas contas</button>
-
+         <!--Cadastro de despesas-->
+         <div class="pop-up" id="cad-despesa" >
+            <h2>Cadastro de Despesa</h2>
+            <form onsubmit="return false">
+               <div class="form-item">
+                  <div class="form-item interno">
+                     <div class="bordaicone">
+                        <label for="depesa-descricao">
+                           <svg width="90%" height="90%" class="icon">
+                              <use xlink:href="#icon-email"></use>
+                           </svg>
+                        </label>
+                     </div>
+                     <div class="inputclass">
+                        <input type="text"  id= "despesa-descricao" placeholder="descricao" required/>
+                     </div>
+                  </div>
+                  <div class="form-item interno">
+                     <div class="bordaicone">
+                        <label for="despesa-valor">
+                           <svg width="90%" height="90%" class="icon">
+                              <use xlink:href="#icon-email"></use>
+                           </svg>
+                        </label>
+                     </div>
+                     <div class="inputclass">
+                        <input type="number"  id= "despesa-valor" placeholder="0.00" required/>
+                     </div>
+                  </div>
+                  <div class="form-item interno">
+                     <div class="bordaicone">
+                        <label for="despesa-data">
+                           <svg width="90%" height="90%" class="icon">
+                              <use xlink:href="#icon-email"></use>
+                           </svg>
+                        </label>
+                     </div>
+                     <div class="inputclass">
+                        <input type="date"  id= "despesa-data" placeholder="?" required/>
+                     </div>
+                  </div>
+                  <div class="form-item interno">
+                     <div class="bordaicone">
+                        <label for="despesa-categoria">
+                           <svg width="90%" height="90%" class="icon">
+                              <use xlink:href="#icon-email"></use>
+                           </svg>
+                        </label>
+                     </div>
+                     <div class="inputclass">
+                        <select id="despesa-categoria">
+                           <option value="Moradia">Moradia</option>
+                           <option value="Lazer">Lazer</option>
+                           <option value="Saude">Saude</option>
+                           <option value="Formacao">Formacao</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="form-item">
+                     <div class="form-item interno">
+                        <input type="submit" class="btn-entrar" onclick="cadastrarDespesa()"  value="Salvar">    </input>
+                     </div>
+                  </div>
+                  <div class="form-item">
+                     <div class="form-item interno">
+                        <input type="button" onclick="abrirHome()" class="btn-entrar" value="Voltar">    </input>
+                     </div>
+                  </div>
+               </div>
+            </form>
          </div>
-         
       </div>
+      <div class="header">
+         <h1>Sistema de finança fácil</h1>
+         <p id="username" ></p>
+      </div>
+      <div class="dash-menu">
+         <ul>
+            <li onclick="abrirHome()">Home</li>
+            <li onclick="abrirContas()">Contas  </li>
+            <li onclick="abrirRelatorios()">Relatorios</li>
+            <li onclick="abrirMetas()">Metas</li>
+            <li onclick="abrirPerfil()">Perfil</li>
+            <li onclick="logOut()">Sair</li>
+         </ul>
+      </div>
+      <div class="conteudo2">
+         <!--Conteudo da pagina principal-->
+         <div class="conteudo-interno" id="home" >
+            <h1>Financas desse Mes</h1>
+            <div class="linha" id="grafico">
+               <div class="grafico-home" id="GraficoBarra-container">
+                  <canvas id="GraficoBarra"></canvas>
+                  <div class="label verde">
+                     <p>Receita</p>
+                  </div>
+                  <div class="label vermelha">
+                     <p>Despesa</p>
+                  </div>
+                  <div class="label azul">
+                     <p>Saldo</p>
+                  </div>
+                  <br>
+               </div>
+               <div class="grafico-home-detalhes">
+                  <p>Detalhes:</p>
+                  <p id="home-receita"></p>
+                  <p id="home-despesa"></p>
+                  <p id="home-saldo"></p>
+               </div>
+            </div>
+            <div class="linha" id="semgrafico">
+               <p>Voce nao possui nenhuma</p>
+               <p> Despesa ou Receita Cadastradas!</p>
+               <p>Acesse a area de contas e comece agora mesmo!</p>
+               <button onclick="abrirContas()">Minhas Contas</button>
+            </div>
+            <div class="linha">
+               <div class="card esquerda" onclick="abrirContas()">
+                  <p>Ver Contas</p>
+               </div>
+               <div class="card direita" onclick="abrirRelatorios()">
+                  <p>Ver Relatorios</p>
+               </div>
+            </div>
+         </div>
+         <!--Conteudo da pagina de Perfil-->
+         <div class="conteudo-interno" id="perfil" >
+            <h2>Seu Perfil </h2>
+            <p id="username-perfil"></p>
+            <p id="email-perfil"></p>
+            <p>Nesta area voce pode editar seu perfil</p>
+            <button onclick="">Alterar Nome</button>
+            <button onclick="">Alterar Foto</button>
+            <button  onclick="">Alterar Senha </button>
+         </div>
+         <!--Conteudo da pagina de Contas do mes-->
+         <div class="conteudo-interno" id="contas" >
+            <p id= "mes"></p>
+            <p id= "saldo"></p>
+            <p>Despesas</p>
+            <table class="tabela" id="table_despesas">
+               <thead>
+                  <tr class='table-row-despesas' >
+                     <th style=" border-top-left-radius: 5px;">Id</th>
+                     <th >Descricao</th>
+                     <th>Vencimento</th>
+                     <th  style=" border-top-right-radius: 5px;" >Valor</th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
+                     <td></td>
+                     <td></td>
+                     <td id="total_despesas" style=" border-bottom-right-radius: 5px;
+                        border-top-right-radius: 5px;"></td>
+                  </tr>
+               </tfoot>
+            </table>
+            <br>
+            <button id ="botao-detalhar-despesas" onclick="detalharDespesas()">Ver Detalhes</button>
+            <button id ="botao-esconder-despesas" onclick="resumirDespesas()">Esconder</button>
+            <button  onclick="abrirCadastroDespesa()">Cadastrar</button>
+            <button id ="botao-excluir-despesas" onclick="excluirDespesa()">Excluir</button>
+            <button id ="botao-editar-despesas" onclick="editarDespesa()">Editar</button>
+            <button id ="botao-desfazer-despesas" onclick="desSelecionarDespesa()">Desfazer Selecao</button>
+            <p>Receitas</p>
+            <table class="tabela" id="table_receitas">
+               <thead>
+                  <tr class='table-row-receitas' >
+                     <th style=" border-top-left-radius: 5px;">Id</th>
+                     <th >Descricao</th>
+                     <th>Vencimento</th>
+                     <th style=" border-top-right-radius: 5px;">Valor</th>
+                  </tr>
+               </thead>
+               <tbody>
+               </tbody>
+               <tfoot>
+                  <tr>
+                     <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
+                     <td></td>
+                     <td></td>
+                     <td style=" border-bottom-right-radius: 5px;border-top-right-radius: 5px" id="total_receitas"></td>
+                  </tr>
+               </tfoot>
+            </table>
+            <br>
+            <button id ="botao-detalhar-receitas" onclick="detalharReceitas()">Ver Detalhes</button>
+            <button id ="botao-esconder-receitas" onclick="resumirReceitas()">Esconder</button>
+            <button onclick="abrirCadastroReceita()">Cadastrar</button>
+            <button id ="botao-excluir-receitas" onclick="excluirReceita()">Excluir</button>
+            <button id ="botao-editar-receitas" onclick="editarReceita()">Editar</button>
+            <button id ="botao-desfazer-receitas" onclick="desSelecionarReceita()">Desfazer Selecao</button>
+         </div>
+         <!--Conteudo da pagina de relatorios-->
+         <div class="conteudo-interno" id="relatorios" >
+            <h2>Relatorio </h2>
+            <p>Relatorio Completo do mes de Junho</p>
+            <p>conteudo?????????????!</p>
+         </div>
+         <!--Conteudo da pagina de metas-->
+         <div class="conteudo-interno" id="metas" >
+            <h2>Metas </h2>
+            <p>conteudo?????????????!</p>
+            <p>conteudo?????????????!</p>
+            <p>conteudo?????????????!</p>
+         </div>
+      </div>
+     
    </body>
 </html>

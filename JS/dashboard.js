@@ -1,6 +1,8 @@
 //variaveis globais
 var despesaSelecionada = {};
 var receitaSelecionada = {};
+var receitas = [];
+var despesas = [];
 //funcoes do menu 
 window.onload = function() {
   var logado = getCookie("logado");
@@ -18,13 +20,21 @@ window.onload = function() {
   $( "#botao-esconder-despesas").css( "display", "none" );  
   $( "#botao-excluir-despesas").css( "display", "none" );  
   $( "#botao-editar-despesas").css( "display", "none" );  
+  $( "#botao-excluir-receitas").css( "display", "none" );  
+  $( "#botao-editar-receitas").css( "display", "none" );  
   $( "#botao-esconder-receitas").css( "display", "none" );  
   $( "#botao-desfazer-receitas").css( "display", "none" );  
+  $( "#botao-desfazer-despesas").css( "display", "none" );  
+  $( "#cad-receita" ).css( "display", "none" ); 
+  $( "#cad-despesa" ).css( "display", "none" ); 
+  $( "#block" ).css( "display", "none" ); 
+  $( "#grafico").css( "display", "none" );  
+  $( "#semgrafico").css( "display", "none" );  
 
-  
   //carregando contas
   loadDespesas();
   loadReceitas();
+
 
   
 
@@ -32,42 +42,52 @@ window.onload = function() {
 
 //gera o grafico
 function gerarGraficoHome(receita,despesa,saldo){
-	//gerando grafico homepage 
-   var options = {
-        responsive:true,
-        scales: {
-	    xAxes: [{
-	    			display: false
-	               
-	            }],
-	    yAxes: [{
-	                gridLines: {
-	                    display:true
-	                }   
-	            }]
-	    }
-	    };
-    Chart.defaults.global.legend.display = false;
-
-    var data = {
-        labels: ["Receita", "Despesa", "Saldo"],
-        datasets: [
-            {
-                data: [receita,despesa,saldo],
-                backgroundColor : ['rgba(35, 234, 35,1)','rgba(255, 40, 40,1)','rgba(40, 147, 255,1)']
-            }
-        ]
-    };                
-
 	
-	$('#GraficoBarra').remove(); // this is my <canvas> element
-    $('#GraficoBarra-container').prepend("<canvas id='GraficoBarra'></canvas>");
-    var ctx = document.getElementById("GraficoBarra").getContext("2d");
-	var myBarChart = new Chart(ctx, {
-	type: 'bar',
-	data: data,
-	options: options
-});
+	if(!(receita == 0 && despesa == 0 && saldo == 0)){
+		$( "#semgrafico").css( "display", "none" );  
+		$( "#grafico").css( "display", "block" );  
+		//gerando grafico homepage 
+	   var options = {
+	        responsive:true,
+	        scales: {
+		    xAxes: [{
+		    			display: false
+		               
+		            }],
+		    yAxes: [{
+		                gridLines: {
+		                    display:true
+		                }   
+		            }]
+		    }
+		    };
+	    Chart.defaults.global.legend.display = false;
+
+	    var data = {
+	        labels: ["Receita", "Despesa", "Saldo"],
+	        datasets: [
+	            {
+	                data: [receita,despesa,saldo],
+	                backgroundColor : ['rgba(35, 234, 35,1)','rgba(255, 40, 40,1)','rgba(40, 147, 255,1)']
+	            }
+	        ]
+	    };                
+
+		
+		$('#GraficoBarra').remove(); // this is my <canvas> element
+	    $('#GraficoBarra-container').prepend("<canvas id='GraficoBarra'></canvas>");
+	    var ctx = document.getElementById("GraficoBarra").getContext("2d");
+		var myBarChart = new Chart(ctx, {
+			type: 'bar',
+			data: data,
+			options: options
+		});
+	}else{
+		//o usuario nao tem nenhuma conta cadastrada
+		 $( "#semgrafico").css( "display", "block" );  
+
+	}
+	
 
 }
 function getNameMonth(){
@@ -121,28 +141,14 @@ function setCookie(){
   document.cookie = "username=uai";
 };
 function abrirCadastroReceita(){
-	$( "#cad-receita-sucess" ).css( "display", "none");
-	$( "#cad-despesa-sucess" ).css( "display", "none");
-	$( "#metas" ).css( "display", "none");
-	$( "#relatorios" ).css( "display", "none");
-	$( "#contas" ).css( "display", "none");
-	$( "#perfil" ).css( "display", "none");
-    $( "#cad-despesa" ).css( "display", "none" ); 
-    $( "#home" ).css( "display", "none");
+	
         $( "#cad-receita" ).css( "display", "block" ); 
+        $( "#block" ).css( "display", "block" ); 
 
 };
 function abrirCadastroDespesa(){
-	$( "#cad-receita-sucess" ).css( "display", "none");
-	$( "#cad-despesa-sucess" ).css( "display", "none");
-	$( "#metas" ).css( "display", "none");
-	$( "#relatorios" ).css( "display", "none");
-	$( "#contas" ).css( "display", "none");
-	$( "#perfil" ).css( "display", "none");
-    $( "#cad-receita" ).css( "display", "none" ); 
-    $( "#home" ).css( "display", "none");
-    $( "#cad-despesa" ).css( "display", "block" ); 
-
+        $( "#cad-despesa" ).css( "display", "block" ); 
+        $( "#block" ).css( "display", "block" ); 
 };
 
 function abrirHome(){
@@ -250,7 +256,36 @@ function resumirDespesas(){
 
 };
 function excluirReceita(){
-	console.log("excluir "+receitaSelecionada.id.textContent);
+	var id = receitaSelecionada.id.textContent;
+	var params= {};
+	params.id = id;
+	params.dono =  getCookie("id");
+
+	//requisicao POST
+	$.post( "https://cffbackend.herokuapp.com/excluirconta", { id: params.id, dono: params.dono})
+  		.done(function( data ) {
+   		     //o objeto foi excluido do banco com sucesso
+   		      //atualiza o array local de receitas
+   		      for(var i = 0 ; i < receitas.length ;i++){
+   		      		if(receitas[i].id == id ){
+   		      			if(i == 0 ){
+   		      				//inicio do araay 
+   		      				receitas.shift();
+   		      			}else{
+   		      				receitas.splice(i, i);
+
+   		      			}
+
+   		      			desSelecionarReceita();
+   		      			atualizarTabelaReceitas();
+   		      		}
+   		      }
+	  	}).fail(function(data) {
+  
+		    console.log("erro ao excluir "+data.responseJSON.mensagem);
+  
+			
+	});
 };
 
 function editarReceita(){
@@ -258,7 +293,36 @@ function editarReceita(){
 };
 
 function excluirDespesa(){
-	console.log("excluir "+despesaSelecionada.id.textContent);
+	var id = despesaSelecionada.id.textContent;
+	var params= {};
+	params.id = id;
+	params.dono =  getCookie("id");
+
+	//requisicao POST
+	$.post( "https://cffbackend.herokuapp.com/excluirconta", { id: params.id, dono: params.dono})
+  		.done(function( data ) {
+   		      //o objeto foi excluido do banco com sucesso
+   		      //atualiza o array local de despesas
+   		      for(var i = 0 ; i < despesas.length ;i++){
+   		      		if(despesas[i].id == id ){
+   		      			if(i == 0 ){
+   		      				//inicio do araay 
+   		      				despesas.shift();
+   		      			}else{
+   		      				despesas.splice(i, i);
+
+   		      			}
+
+   		      			desSelecionarDespesa();
+   		      			atualizarTabelaDespesas();
+   		      		}
+   		      }
+	  	}).fail(function(data) {
+  
+		    console.log("erro ao excluir "+data.responseJSON.mensagem);
+  
+			
+	});
 };
 
 function editarDespesa(){
@@ -296,8 +360,14 @@ function cadastrarReceita(){
 	$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
 		data: params.data,tipo:"receita" })
   		.done(function( data ) {
-   		      console.log("cadastrado "+data);
-   		      abrirReceitaCadastrada();
+   		     //salvo no banco com sucesso
+  			 //atualiza o array local de receitas
+  			 $( "#cad-receita" ).css( "display", "none" ); 
+        	 $( "#block" ).css( "display", "none" ); 
+        	 detalharReceitas();
+        	 desSelecionarReceita();
+  			 receitas.push(data);
+  			 atualizarTabelaReceitas();
 	  	}).fail(function(data) {
   
 		    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
@@ -319,8 +389,14 @@ function cadastrarDespesa(){
 	$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
 		data: params.data,tipo:"despesa" })
   		.done(function( data ) {
-   		      console.log("cadastrado "+data);
-   		      abrirDespesaCadastrada();
+  			 //salvo no banco com sucesso
+  			 //atualiza o array local de despesas
+  			 $( "#cad-despesa" ).css( "display", "none" ); 
+        	 $( "#block" ).css( "display", "none" ); 
+        	 desSelecionarDespesa();
+        	 detalharDespesas();
+  			  despesas.push(data);
+  			  atualizarTabelaDespesas();
 	  	}).fail(function(data) {
   
 		    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
@@ -367,6 +443,35 @@ function selecionarReceita(row){
     
 };
 
+function atualizarTabelaDespesas(){
+	$('#table_despesas > tbody').empty();
+    var total = 0;
+    var data = despesas;
+    for(var i = 0 ; i < data.length ;i++){
+		  	total += data[i].valor;
+		  	$('#table_despesas > tbody').append("<tr class='table-row-despesas' onclick='selecionarDespesa(this)'><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
+	}
+
+   $( "#total_despesas" ).text(total);
+   $( "#home-despesa" ).text("Despesa : "+total);
+
+  calcularSaldo();
+};
+
+function atualizarTabelaReceitas(){
+	var total = 0;
+	var data = receitas;
+	 $('#table_receitas > tbody').empty();
+	 for(var i = 0 ; i < data.length ;i++){
+  		total += data[i].valor;   
+		   $('#table_receitas > tbody').append("<tr  class='table-row-receitas' onclick='selecionarReceita(this)' ><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
+	 }
+	  $( "#total_receitas" ).text(total);
+	  $( "#home-receita" ).text("Receita : "+total);
+	      calcularSaldo();
+}
+
+
 function loadDespesas(){
 
 	var params= {};
@@ -375,17 +480,9 @@ function loadDespesas(){
 	//requisicao POST
 	$.post( "https://cffbackend.herokuapp.com/getdespesas", { usuario: params.id,mes: params.mes })
   		.done(function( data ) {
-   		      $('#table_despesas > tbody').empty();
-   		      var total = 0;
-   		      for(var i = 0 ; i < data.length ;i++){
-   		      	total += data[i].valor;
-   		      	$('#table_despesas > tbody').append("<tr class='table-row-despesas' onclick='selecionarDespesa(this)'><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
-        	   }
-
-        	   $( "#total_despesas" ).text(total);
-        	   $( "#home-despesa" ).text("Despesa : "+total);
-
-			  calcularSaldo();
+   		      despesas = data;
+   		      atualizarTabelaDespesas();
+   		      resumirDespesas();
 
 	  	}).fail(function(data) {
   
@@ -402,15 +499,9 @@ function loadReceitas(){
 	//requisicao POST
 	$.post( "https://cffbackend.herokuapp.com/getreceitas", { usuario: params.id,mes: params.mes })
   		.done(function( data ) {
-   		       var total = 0;
-   		      $('#table_receitas > tbody').empty();
-   		      for(var i = 0 ; i < data.length ;i++){
-	      			total += data[i].valor;   
-	   		      	$('#table_receitas > tbody').append("<tr  class='table-row-receitas' onclick='selecionarReceita(this)' ><td>"+data[i].id+"</td><td>"+data[i].descricao+"</td><td>"+data[i].data+" </td><td>"+data[i].valor+" </td></tr>");
-        	 }
-        	  $( "#total_receitas" ).text(total);
-        	  $( "#home-receita" ).text("Receita : "+total);
-   		      calcularSaldo();
+   		      receitas = data;
+   		      atualizarTabelaReceitas();
+   		      resumirReceitas();
 	  	}).fail(function(data) {
   
 		    console.log("ERRO"+data.responseJSON.mensagem);

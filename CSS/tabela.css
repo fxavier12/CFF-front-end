@@ -6,10 +6,9 @@
 }
 	
 .table-row-despesas{
-	display: none;
+	
 }
 .table-row-receitas{
-	display: none;
 }
 .tabela th, td {
    color: white;
