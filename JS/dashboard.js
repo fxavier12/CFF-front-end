@@ -25,7 +25,7 @@ window.onload = function() {
 
 };
 var callback = function(){
-	$.get("../APP/home.html", function(data){
+	$.get("/APP/home.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
     });
