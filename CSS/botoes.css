@@ -1,0 +1,26 @@
+/*define o estilo dos botoes da aplicacao*/
+
+.btn-login{
+  width: 10%;
+  height: 30px;
+  float: right;
+  margin-right: 30px;
+  margin-top: 30px
+
+}
+.btn-entrar{
+  width: 100%;
+  margin:auto;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.closebtn{
+				    margin-right: 4px;
+				    color: white;
+				    font-weight: bold;
+				    float: right;
+				    font-size: 22px;
+				    line-height: 20px;
+				    cursor: pointer;
+				    transition: 0.3s;
+}

@@ -1,0 +1,56 @@
+ <!--Conteudo da pagina principal-->
+ <div class="conteudo-interno" id="home" >
+ 	
+    <h1>Financas desse Mes</h1>
+    <div class="linha" id="grafico">
+       <div class="grafico-home" id="GraficoBarra-container">
+          <canvas id="GraficoBarra"></canvas>
+          <div class="label verde">
+             <p>Receita</p>
+          </div>
+          <div class="label vermelha">
+             <p>Despesa</p>
+          </div>
+          <div class="label azul">
+             <p>Saldo</p>
+          </div>
+          <br>
+       </div>
+       <div class="grafico-home-detalhes">
+          <p>Detalhes:</p>
+          <p id="home-receita"></p>
+          <p id="home-despesa"></p>
+          <p id="home-saldo"></p>
+       </div>
+    </div>
+    <div class="linha" id="semgrafico">
+       <p>Voce nao possui nenhuma</p>
+       <p> Despesa ou Receita Cadastradas!</p>
+       <p>Acesse a area de contas e comece agora mesmo!</p>
+       <button onclick="abrirContas()">Minhas Contas</button>
+    </div>
+    <div class="linha">
+       <div class="card esquerda" onclick="abrirContas()">
+          <p>Ver Contas</p>
+       </div>
+       <div class="card direita" onclick="abrirRelatorios()">
+          <p>Ver Relatorios</p>
+       </div>
+    </div>
+ </div>
+ <script src="JS/despesas.js"></script>
+ <script src="JS/receitas.js"></script>
+ <script src="JS/grafico.js"></script>
+
+ <script type="text/javascript">
+  	console.log(receitas);
+ 	var receita = totalReceitas();
+	var despesa = totalDespesas();
+	var saldo = receita - despesa;
+	$( "#home-saldo" ).text("Saldo : "+saldo);
+  	$( "#home-despesa").text(despesa);
+  	$("#home-receita").text(receita);
+	gerarGraficoHome(receita,despesa,saldo);
+
+
+ </script>

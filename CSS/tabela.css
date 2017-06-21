@@ -26,17 +26,19 @@
 
 
 .tabela th {
-	background-color:   #004d1a;
+	background-color:   var(--secundaria-forte);
 }
 .tabela tr{
-	background-color: #009933;
+	background-color: var(--secundaria-fraca);
 }
 
 .tabela tr.selecionado {
-	background-color: red;
+	background-color: var(--secundaria-forte);
 }
 
 .tabela tfoot tr{
-	background-color: #004d1a;
+	background-color: var(--secundaria-forte);
 }
-.tabela tr:nth-child{background-color: black}
+.tabela tr:nth-child(even){
+	background-color: var(--secundaria-media);
+}

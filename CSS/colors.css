@@ -1,0 +1,17 @@
+
+/* define as variaveis de cores
+*/
+
+:root{
+  --principal-forte:  #483D8B ;
+  --principal-media: #20B2AA;
+  --principal-fraca: #87CEFA;
+
+  --secundaria-forte: #252b27;
+  --secundaria-media: #505f55;
+  --secundaria-fraca: #869a8d;
+
+  --alert : red ;
+  --font-color: blue;
+}
+

@@ -1,0 +1,72 @@
+<!--Conteudo da pagina de Contas do mes-->
+<div class="conteudo-interno" id="contas" >
+   <p id= "mes"></p>
+   <p id= "saldo"></p>
+   <p>Despesas</p>
+   <table class="tabela" id="table_despesas">
+      <thead>
+         <tr class='table-row-despesas' >
+            <th style=" border-top-left-radius: 5px;">Id</th>
+            <th >Descricao</th>
+            <th>Vencimento</th>
+            <th  style=" border-top-right-radius: 5px;" >Valor</th>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
+            <td></td>
+            <td></td>
+            <td id="total_despesas" style=" border-bottom-right-radius: 5px;
+               border-top-right-radius: 5px;"></td>
+         </tr>
+      </tfoot>
+   </table>
+   <br>
+   <button id ="botao-detalhar-despesas" onclick="detalharDespesas()">Ver Detalhes</button>
+   <button id ="botao-esconder-despesas" onclick="resumirDespesas()">Esconder</button>
+   <button  onclick="abrirCadastroDespesa()">Cadastrar</button>
+   <button id ="botao-excluir-despesas" onclick="excluirDespesa()">Excluir</button>
+   <button id ="botao-editar-despesas" onclick="editarDespesa()">Editar</button>
+   <button id ="botao-desfazer-despesas" onclick="desSelecionarDespesa()">Desfazer Selecao</button>
+   <p>Receitas</p>
+   <table class="tabela" id="table_receitas">
+      <thead>
+         <tr class='table-row-receitas' >
+            <th style=" border-top-left-radius: 5px;">Id</th>
+            <th >Descricao</th>
+            <th>Vencimento</th>
+            <th style=" border-top-right-radius: 5px;">Valor</th>
+         </tr>
+      </thead>
+      <tbody>
+      </tbody>
+      <tfoot>
+         <tr>
+            <td style=" border-bottom-left-radius: 5px;border-top-left-radius: 5px;">Total</td>
+            <td></td>
+            <td></td>
+            <td style=" border-bottom-right-radius: 5px;border-top-right-radius: 5px" id="total_receitas"></td>
+         </tr>
+      </tfoot>
+   </table>
+   <br>
+   <button id ="botao-detalhar-receitas" onclick="detalharReceitas()">Ver Detalhes</button>
+   <button id ="botao-esconder-receitas" onclick="resumirReceitas()">Esconder</button>
+   <button onclick="abrirCadastroReceita()">Cadastrar</button>
+   <button id ="botao-excluir-receitas" onclick="excluirReceita()">Excluir</button>
+   <button id ="botao-editar-receitas" onclick="editarReceita()">Editar</button>
+   <button id ="botao-desfazer-receitas" onclick="desSelecionarReceita()">Desfazer Selecao</button>
+</div>
+
+<script src="JS/receitas.js"></script>
+<script src="JS/despesas.js"></script>
+<script type="text/javascript">
+     $( "#mes" ).text("Financas do mes de "+getNameMonth());
+     atualizarTabelaReceitas();
+     atualizarTabelaDespesas();
+     resumirReceitas();
+     resumirDespesas();
+</script>

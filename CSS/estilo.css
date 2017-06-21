@@ -1,72 +1,26 @@
+/*
+*   CSS estilo.css
+*   define as principais classe de interface usadas
+*/
+
 html {
-  height: 100%;
-  background: -webkit-linear-gradient(right, #009933 , red); /* For Safari 5.1 to 6.0 */
-    background: -o-linear-gradient(left,#009933, red); /* For Opera 11.1 to 12.0 */
-    background: -moz-linear-gradient( left, #009933, red); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to  left, #009933 ,#1aff66); /* Standard syntax (must be last) */
-}
 
-::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  color: white;
-  font-size: 17px;
+    height: 100%;
+    /*efeito gradiente*/
+    background: linear-gradient(to  left , var(--principal-media) , var(--principal-fraca) ); /* Standard syntax (must be last) */
 }
-::-moz-placeholder { /* Firefox 19+ */
-  color: white;
-  font-size: 17px;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  color: white;
-  font-size: 17px;
-}
-:-moz-placeholder { /* Firefox 18- */
-  color: white;
-  font-size: 17px;
-}
-
 body {
   padding-top:0;
   margin: 0;
   
 }
-a {
-  text-decoration: none;
-  color:white;
-}
-a:hover {
-  font-size:18px;
-}
 
-h1 {
-  color:white;
-  text-align: center;
-  
-}
-.header{
-  padding-top: 20px;
-  width: 100%;
-  height: 100px;
-  background-color:  #004d1a;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.header h1{
-  width: 50%;
-  float: left;
-  margin-left: 25%;
-  margin-bottom: 10px;
-}
-.btn-login{
-  width: 10%;
-  height: 30px;
-  float: right;
-  margin-right: 30px;
-  margin-top: 30px
-
+.conteudo {
+  display: none;
 }
 .conteudo {
   width:70%;
   margin:auto;
-  display: none;
 }
 .conteudo2 {
   width:79%;
@@ -74,35 +28,13 @@ h1 {
   margin-left: 2px;
   margin-top: 2px;
   float: left;
-  background-color: green;
+  background-color: var(--principal-media);
   border-radius: 5px;
-}
-.linha{
-  width: 100%;
-  height: 50%;
-  display: block;
-}
-.absolute{
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0,0,0,0.6);
-  z-index: 1;
-}
-.pop-up {
-  padding: 30px;
-  background-color: #28FF93;
-  border-radius: 5px;
-  width: 60%;
-  position: relative;
-  top: 30%;
-  left: 30%;
-  z-index: 5;
 }
 
 .card{
   width: 49%;
-  background-color: red;
+  background-color: var(--principal-forte);
   border-radius: 5px;
 }
 
@@ -113,187 +45,14 @@ h1 {
 .card.direita{
   float: right;
 }
-.dash-menu {
-  width: 20%;
-  height: 100%;
-  background-color: #004d1a;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
-  float: left;
-  margin-top: 2px;
-  z-index: -1;
 
-}
-.dash-menu ul{
-   padding: 0;
-   margin: 0;
-}
-.dash-menu li{
-  list-style-type: none;
-  background-color: blue;
-  width: 98%;
-  margin: auto;
-  height: 5%;
-  margin-top: 1%;
-  text-align: center;
-  padding-top: 5px;
-}
-.dash-menu li:hover{
-  background-color: green;
-
-}
 
 .conteudo-interno{
   width: 80%;
   margin: auto;
-  display: none;
-    z-index: -1;
+  z-index: -1;
 
-}
-.login{
-  display:none;
-}
-
-.sucesso{
-  display:none;
-}
-
-p{
-  color:white;
-  text-align:center;
-  font-size: 30px;
-}
-.form-item{
-  width: 75%;
-  margin: auto ;
-  margin-bottom: 10px;
-}
-.form-item.interno{
-  width: 60%;
-  margin: 0 auto;
-   display: table;
-    margin: 0 auto;
-  
 }
 
 
 
-
-.inputclass{
-  width: 78%;
-  display: inline-block;
-  margin: 0 auto;
-   background-color: rgba(0, 0, 0, 0.2);
-  vertical-align: top;
-  border-radius: 0px 5px 5px 0px;
-}
-.recuperar{
-  display:none;
-}
-label {
-  margin-left: 3px;
- 
-}
-
-.bordaicone{
-  padding:2px;
-  border-radius: 5px 0px 0px 5px;
-  width: 20%;
-  height: 39px;
-   background-color: rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  margin: 0 auto;
-}
-.icon{
-  fill: white;
-  margin: 0 auto;
-  border: 1px #93bcf9 solid;
-   border-radius: 5px 5px 5px 5px;
-}
-input {
-  padding-left:10px;
-  color:white;
-  font-size:15px;
-  border-radius: 0px 5px 5px 0px;
-  border: none;
-   background-color: rgba(0, 0, 0, 0.2);
-  display: inline-block;
-   margin: 0 auto;
-  vertical-align: top;
-  width: 96%;
-  height: 41px;
- 
-}
-input:focus{ 
-  outline-color: #93bcf9;
-  background-color: #526889;
-}
-input:hover{
-  background-color: #526889;
-}
-
-.formulario {
-  width: 100%;
-  margin: auto;
-  
-}
-
-.formulario > form{
-  border-radius: 10px 10px 10px 10px;
-    width: 100%;
-    padding-top: 20px;
-    padding-bottom: 50px;
-     /* RGBa with 0.6 opacity */
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.btn-entrar{
-  width: 100%;
-  margin:auto;
-  border-radius: 5px 5px 5px 5px;
-}
-.texto-center{
-  height: 30px;
-  text-align:center;
-  color:white;
-  
-}
-.paragrafo{
-   font-size:16px; 
-}
-.logotipo{
-  border-radius: 10px 10px 10px 10px;
-   background-color: rgba(255, 255, 255, 0.1);
-  background-image: url("http://i67.tinypic.com/mvt1ug.jpg");
-   background-repeat: no-repeat;
-  background-position: center;
-  width: 25%;
-  margin: auto;
-  height:150px;
-  margin-bottom:10px;
-}
-
-.registro {
-  display: none;
-}
-
-.alert{
-  color:white;
-  text-align:center;
-  background-color: #CC6E00;
-  width: 100%;
-  margin:auto;
-  border-radius: 5px 0px 0px 5px;
-  border: 1px #7F4500 solid;
-  display : none;
-}
-.closebtn {
-				    margin-right: 4px;
-				    color: white;
-				    font-weight: bold;
-				    float: right;
-				    font-size: 22px;
-				    line-height: 20px;
-				    cursor: pointer;
-				    transition: 0.3s;
-			}

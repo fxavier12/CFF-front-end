@@ -1,0 +1,29 @@
+.dash-menu {
+  width: 20%;
+  height: 100%;
+  background-color: var(--secundaria-forte);
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  float: left;
+  margin-top: 2px;
+  z-index: -1;
+
+}
+.dash-menu ul{
+   padding: 0;
+   margin: 0;
+}
+.dash-menu li{
+  list-style-type: none;
+  background-color: var(--secundaria-media);
+  width: 98%;
+  margin: auto;
+  height: 5%;
+  margin-top: 1%;
+  text-align: center;
+  padding-top: 5px;
+}
+.dash-menu li:hover{
+  background-color: var(--secundaria-fraca);
+
+}

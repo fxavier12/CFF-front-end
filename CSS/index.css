@@ -1,0 +1,63 @@
+/*define o estilo dos elementos que da pagina index.html*/
+
+a ,h1,h2 ,p ,.alert ,.texto-center{
+	  color: var(--font-color);
+}
+
+
+
+h1 {
+  text-align: center;
+  
+}
+
+p{
+  text-align:center;
+  font-size: 30px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  font-size:18px;
+}
+
+
+
+.logotipo{
+  border-radius: 10px 10px 10px 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: url("http://i67.tinypic.com/mvt1ug.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 25%;
+  margin: auto;
+  height:150px;
+  margin-bottom:10px;
+}
+
+.registro, .sucesso , .recuperar, .alert ,.login{
+  display: none;
+}
+
+.alert ,.texto-center{
+	  text-align:center;
+
+}
+
+.alert{
+  background-color: var(--alert);
+  width: 100%;
+  margin:auto;
+  border-radius: 5px 0px 0px 5px;
+  border: 1px #7F4500 solid;
+}
+
+.texto-center{
+  height: 30px;
+
+  
+}
+.paragrafo{
+   font-size:16px; 
+}
