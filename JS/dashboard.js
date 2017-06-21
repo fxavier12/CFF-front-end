@@ -25,7 +25,7 @@ window.onload = function() {
 
 };
 var callback = function(){
-	$.get("/APP/home.html", function(data){
+	$.get("APP/home.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
     });
@@ -52,35 +52,35 @@ function abrirCadastroDespesa(){
 };
 
 function abrirHome(){
-	 $.get("../APP/home.html", function(data){
+	 $.get("APP/home.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
   });
 };
 
 function abrirPerfil(){
-	$.get("../APP/perfil.html", function(data){
+	$.get("APP/perfil.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
   });
 };
 
 function abrirContas(){
-	$.get("../APP/contas.html", function(data){
+	$.get("APP/contas.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
   });
 };
 
 function abrirRelatorios(){
-	$.get("../APP/relatorio.html", function(data){
+	$.get("APP/relatorio.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
   });
 };
 
 function abrirMetas(){
-	$.get("../APP/metas.html", function(data){
+	$.get("APP/metas.html", function(data){
 	  	$("#content").empty();
 	    $("#content").append(data);
   });
