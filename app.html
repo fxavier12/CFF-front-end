@@ -6,6 +6,7 @@
       <link rel="stylesheet" type="text/css" href="CSS/botoes.css">
       <link rel="stylesheet" type="text/css" href="CSS/menu.css">
       <link rel="stylesheet" type="text/css" href="CSS/formularios.css">
+      <link rel="stylesheet" type="text/css" href="CSS/rodape.css">
       <link rel="stylesheet" type="text/css" href="CSS/tabela.css">
       <link rel="stylesheet" type="text/css" href="CSS/app.css">
       <link rel="stylesheet" type="text/css" href="CSS/graficos.css">
@@ -20,149 +21,9 @@
       
    </head>
    <body>
-       <div onclick="console.log('oii')" id="block">
-         <!--cadastro de Receitas -->
-         <div class="pop-up" id="cad-receita" >
-            <h2>Cadastro de Receita</h2>
-            <form onsubmit="return false">
-               <div class="form-item">
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="receita-descricao">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="text"  id= "receita-descricao" placeholder="descricao" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="receita-valor">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="number"  id= "receita-valor" placeholder="0.00" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="receita-data">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="date"  id= "receita-data" placeholder="?" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="receita-categoria">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <select  id="receita-categoria">
-                           <option value="Moradia">Moradia</option>
-                           <option value="Lazer">Lazer</option>
-                           <option value="Saude">Saude</option>
-                           <option value="Formacao">Formacao</option>
-                        </select>
-                     </div>
-                  </div>
-                  <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="submit" class="btn-entrar" onclick="cadastrarReceita()"  value="Salvar">    </input>
-                     </div>
-                  </div>
-                  <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="button" onclick="abrirHome()" class="btn-entrar" value="Voltar">    </input>
-                     </div>
-                  </div>
-               </div>
-            </form>
-         </div>
-         <!--Cadastro de despesas-->
-         <div class="pop-up" id="cad-despesa" >
-            <h2>Cadastro de Despesa</h2>
-            <form onsubmit="return false">
-               <div class="form-item">
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="depesa-descricao">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="text"  id= "despesa-descricao" placeholder="descricao" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-valor">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="number"  id= "despesa-valor" placeholder="0.00" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-data">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <input type="date"  id= "despesa-data" placeholder="?" required/>
-                     </div>
-                  </div>
-                  <div class="form-item interno">
-                     <div class="bordaicone">
-                        <label for="despesa-categoria">
-                           <svg width="90%" height="90%" class="icon">
-                              <use xlink:href="#icon-email"></use>
-                           </svg>
-                        </label>
-                     </div>
-                     <div class="inputclass">
-                        <select id="despesa-categoria">
-                           <option value="Moradia">Moradia</option>
-                           <option value="Lazer">Lazer</option>
-                           <option value="Saude">Saude</option>
-                           <option value="Formacao">Formacao</option>
-                        </select>
-                     </div>
-                  </div>
-                  <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="submit" class="btn-entrar" onclick="cadastrarDespesa()"  value="Salvar">    </input>
-                     </div>
-                  </div>
-                  <div class="form-item">
-                     <div class="form-item interno">
-                        <input type="button" onclick="abrirHome()" class="btn-entrar" value="Voltar">    </input>
-                     </div>
-                  </div>
-               </div>
-            </form>
-         </div>
+       <div onclick="console.log('eu deveria fechar kkkkkkk');" id="block">
+         
+        
       </div>
       <div class="header">
          <h1>Sistema de finança fácil</h1>
@@ -195,6 +56,9 @@
          
          
       </div>
-     
+      <div class="rodape">
+         <p>Sistema de Financa Facil - 2017</p>
+         <p>Powered by Francisco Xavier </p>
+      </div>
    </body>
 </html>

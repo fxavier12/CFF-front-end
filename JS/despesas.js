@@ -39,7 +39,9 @@ function excluirDespesa(){
 	params.id = id;
 	params.dono =  getCookie("id");
 
-	
+	//inicia a animacao de loading
+	$('#loading').css("display","block");
+
 	//requisicao POST
 	$.post( "https://cffbackend.herokuapp.com/excluirconta", { id: params.id, dono: params.dono})
   		.done(function( data ) {
@@ -59,44 +61,101 @@ function excluirDespesa(){
    		      			atualizarTabelaDespesas();
    		      		}
    		      }
+   		      //desativa a animacao
+			 $('#loading').css("display","none");
 
 	  	}).fail(function(data) {
   
 		    console.log("erro ao excluir "+data.responseJSON.mensagem);
-  
+  			//desativa a animacao
+			 $('#loading').css("display","none");
 			
 	});
 };
+function atualizarDespesa(){
+		var params= {};
+		params.dono = getCookie("id");
+		params.id = despesaSelecionada.id.textContent;
+		params.descricao =  $( "#despesa-descricao" ).val();;
+		params.valor =  $( "#despesa-valor" ).val();;
+		params.data =   $( "#despesa-data" ).val();
+		//params.categoria = $( "#receita-categoria" ).val();
 
+
+		//inicia a animacao de loading
+		$('#loading').css("display","block");
+
+		//requisicao POST
+		$.post( "https://cffbackend.herokuapp.com/editarconta", {dono : params.dono,id: params.id,data: params.data,
+			descricao :params.descricao,valor:params.valor})
+	  		.done(function( data ) {
+	   		     //salvo no banco com sucesso
+	  			 //atualiza o array local de receitas
+	  			 $( "#cad-receita" ).css( "display", "none" ); 
+	        	 $( "#block" ).css( "display", "none" ); 
+	        	 detalharReceitas();
+	        	 desSelecionarReceita();
+	  			 //percorre o array
+	  			 for( i= 0 ; i < despesas.length ; i++){
+	  			 	if(despesas[i].id == params.id){
+	  			 		despesas[i].valor = params.valor;
+	  			 		despesas[i].descricao = params.descricao;
+	  			 		despesas[i].data = params.data;
+	  			 	}
+	  			 }
+	  			 console.log(data);
+	  			 //atualiza o vetor local :::
+	  			 atualizarTabelaDespesas();
+	  			 //desativa a animacao
+				 $('#loading').css("display","none");
+		  	}).fail(function(data) {
+	  
+			    console.log("erro ao atualizar "+data.responseJSON.mensagem);
+	  
+				//desativa a animacao
+				 $('#loading').css("display","none");
+		});
+};
 //cadastra a despesa no banco e insere no array
 function cadastrarDespesa(){
-	var params= {};
-	params.id = getCookie("id");
-	params.descricao = $( "#despesa-descricao" ).val();
-	params.valor = $( "#despesa-valor" ).val();
-	params.data = $( "#despesa-data" ).val();
-	params.categoria = $( "#despesa-categoria" ).val();
+	if(despesaSelecionada.id != undefined){
+		atualizarDespesa();
+	}else{
+		var params= {};
+		params.id = getCookie("id");
+		params.descricao = $( "#despesa-descricao" ).val();
+		params.valor = $( "#despesa-valor" ).val();
+		params.data = $( "#despesa-data" ).val();
+		params.categoria = $( "#despesa-categoria" ).val();
 
-	//requisicao POST
-	$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
-		data: params.data,tipo:"despesa" })
-  		.done(function( data ) {
-  			 //salvo no banco com sucesso
-  			 //atualiza o array local de despesas
-  			 $( "#cad-despesa" ).css( "display", "none" ); 
-        	 $( "#block" ).css( "display", "none" ); 
-        	 desSelecionarDespesa();
-        	 detalharDespesas();
-        	 console.log(despesas);
-  			 window.despesas.push(data);
-  			 atualizarTabelaDespesas();
-	  	}).fail(function(data) {
-  
-		    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
-  
-			
-	});
+		//inicia a animacao de loading
+		$('#loading').css("display","block");
 
+		//requisicao POST
+		$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
+			data: params.data,tipo:"despesa" })
+	  		.done(function( data ) {
+	  			 //salvo no banco com sucesso
+	  			 //atualiza o array local de despesas
+	  			 $( "#cad-despesa" ).css( "display", "none" ); 
+	        	 $( "#block" ).css( "display", "none" ); 
+	        	 desSelecionarDespesa();
+	        	 detalharDespesas();
+	        	 console.log(despesas);
+	  			 window.despesas.push(data);
+	  			 atualizarTabelaDespesas();
+	  			 //desativa a animacao
+				 $('#loading').css("display","none");
+		  	}).fail(function(data) {
+	  			//desativa a animacao
+				 $('#loading').css("display","none");
+			    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
+	  
+				
+		});
+
+	}
+	
 };
 
 //atualiza a tabela de despesas 
@@ -115,6 +174,7 @@ function atualizarTabelaDespesas(){
 
 //remove a selecao na tabela de despesas
 function desSelecionarDespesa(){
+	despesaSelecionada={};
 	var linhas = $("#table_despesas > tbody > tr");	
 	for(i = 0 ; i < linhas.length ;i++){
 		linhas[i].className = "table-row-despesas" ;
@@ -127,7 +187,10 @@ function desSelecionarDespesa(){
 //seleciona uma despesa na tabela
 function selecionarDespesa(row){
 	desSelecionarDespesa();
-	despesaSelecionada.id = row.firstChild.firstChild;
+	despesaSelecionada.id = row.children[0].firstChild;
+	despesaSelecionada.descricao = row.children[1].firstChild;
+	despesaSelecionada.data = row.children[2].firstChild;
+	despesaSelecionada.valor = row.children[3].firstChild;
 	row.className += " selecionado"; 
 	$( "#botao-editar-despesas").css( "display", "inline-block" );  
     $( "#botao-excluir-despesas").css( "display", "inline-block" ); 

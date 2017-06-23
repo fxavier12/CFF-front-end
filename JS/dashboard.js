@@ -42,13 +42,20 @@ var aguardar = function(id,funcao){
 };
 
 function abrirCadastroReceita(){
-        $( "#cad-receita" ).css( "display", "block" ); 
         $( "#block" ).css( "display", "block" ); 
+
+        $.get("APP/cadastroreceita.html", function(data){
+	  	$("#block").empty();
+	    $("#block").append(data);
+  });
 
 };
 function abrirCadastroDespesa(){
-        $( "#cad-despesa" ).css( "display", "block" ); 
         $( "#block" ).css( "display", "block" ); 
+        $.get("APP/cadastrodespesa.html", function(data){
+		  	$("#block").empty();
+		    $("#block").append(data);
+		   });
 };
 
 function abrirHome(){
@@ -107,12 +114,12 @@ function resumirDespesas(){
 
 
 function editarReceita(){
-	console.log("editar "+receitaSelecionada.id.textContent );
+	abrirCadastroReceita();
 };
 
 
 function editarDespesa(){
-	console.log("editar "+despesaSelecionada.id.textContent );
+	abrirCadastroDespesa();
 };
 
 function detalharReceitas(){

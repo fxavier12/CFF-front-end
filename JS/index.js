@@ -15,7 +15,8 @@ function login(){
   params.senha= $( "#senha" ).val();
 
  
-  
+  //inicia a animacao de loading
+  $('#loading').css("display","block");
   //requisicao POST
           $.post( "https://cffbackend.herokuapp.com/login", { email: params.email , senha: params.senha })
               .done(function( data ) {
@@ -26,14 +27,16 @@ function login(){
                       document.cookie = "email="+data.email;
                       window.location = "app.html";
                       $( "#userarea" ).css( "display", "block" );
-            
-              }).fail(function(data) {
-                  
-                $( "#emailalert" ).css( "display", "block" );
-                $( "#emailalert" ).empty()
-                $( "#emailalert" ).append(data.responseJSON.mensagem );
-                $( "#emailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
-                
+                      //para a animacao de loading
+                      $('#loading').css("display","none");
+                }).fail(function(data) {
+                        
+                      $( "#emailalert" ).css( "display", "block" );
+                      $( "#emailalert" ).empty()
+                      $( "#emailalert" ).append(data.responseJSON.mensagem );
+                      $( "#emailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
+                       //para a animacao de loading
+                      $('#loading').css("display","none");
                   
               
             });
@@ -46,20 +49,23 @@ function cadastrar(){
   params.nome = $( "#cadnome" ).val();
   params.email = $( "#cademail" ).val();
   params.senha= $( "#cadsenha" ).val();
-  
+  //inicia a animacao de loading
+  $('#loading').css("display","block");
   //requisicao POST
 					$.post( "https://cffbackend.herokuapp.com/cadastro", { nome: params.nome, email: params.email , senha: params.senha })
 				  		.done(function( data ) {
 				   		       $( "#registro" ).css( "display", "none" );
-              $( "#sucesso" ).css( "display", "block" );
-            
+                     $( "#sucesso" ).css( "display", "block" );
+                      //para a animacao de loading
+                      $('#loading').css("display","block");
 					  	}).fail(function(data) {
                   
-                  $( "#reqemailalert" ).css( "display", "block" );
-                  $( "#reqemailalert" ).empty()
-                  $( "#reqemailalert" ).append(data.responseJSON.mensagem );
-                  $( "#reqemailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
-                  
+                      $( "#reqemailalert" ).css( "display", "block" );
+                      $( "#reqemailalert" ).empty()
+                      $( "#reqemailalert" ).append(data.responseJSON.mensagem );
+                      $( "#reqemailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
+                      //para a animacao de loading
+                      $('#loading').css("display","block");
 							
 		  			});
   

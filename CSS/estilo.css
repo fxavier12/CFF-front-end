@@ -2,9 +2,12 @@
 *   CSS estilo.css
 *   define as principais classe de interface usadas
 */
+li{
+    cursor:pointer;
 
+}
 html {
-
+    font-family: 'Antic Slab', serif;
     height: 100%;
     /*efeito gradiente*/
     background: linear-gradient(to  left , var(--principal-media) , var(--principal-fraca) ); /* Standard syntax (must be last) */

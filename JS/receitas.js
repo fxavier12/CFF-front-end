@@ -7,6 +7,9 @@ function excluirReceita(){
 	params.id = id;
 	params.dono =  getCookie("id");
 
+	//inicia a animacao de loading
+	$('#loading').css("display","block");
+
 	//requisicao POST
 	$.post( "https://cffbackend.herokuapp.com/excluirconta", { id: params.id, dono: params.dono})
   		.done(function( data ) {
@@ -25,41 +28,100 @@ function excluirReceita(){
    		      			atualizarTabelaReceitas();
    		      		}
    		      }
+   		      //desativa a animacao
+			 $('#loading').css("display","none");
 	  	}).fail(function(data) {
-  
+  			//desativa a animacao
+			 $('#loading').css("display","none");
 		    console.log("erro ao excluir "+data.responseJSON.mensagem);
   
 			
 	});
 };
 
+function atualizarReceita(){
+		var params= {};
+		params.dono = getCookie("id");
+		params.id = receitaSelecionada.id.textContent;
+		params.descricao =  $( "#receita-descricao" ).val();;
+		params.valor =  $( "#receita-valor" ).val();;
+		params.data =   $( "#receita-data" ).val();
+		//params.categoria = $( "#receita-categoria" ).val();
+
+
+		//inicia a animacao de loading
+		$('#loading').css("display","block");
+
+		//requisicao POST
+		$.post( "https://cffbackend.herokuapp.com/editarconta", {dono : params.dono,id: params.id,data: params.data,
+			descricao :params.descricao,valor:params.valor})
+	  		.done(function( data ) {
+	   		     //salvo no banco com sucesso
+	  			 //atualiza o array local de receitas
+	  			 $( "#cad-receita" ).css( "display", "none" ); 
+	        	 $( "#block" ).css( "display", "none" ); 
+	        	 detalharReceitas();
+	        	 desSelecionarReceita();
+	  			 //percorre o array
+	  			 for( i= 0 ; i < receitas.length ; i++){
+	  			 	if(receitas[i].id == params.id){
+	  			 		receitas[i].valor = params.valor;
+	  			 		receitas[i].descricao = params.descricao;
+	  			 		receitas[i].data = params.data;
+	  			 	}
+	  			 }
+	  			 console.log(data);
+	  			 //atualiza o vetor local :::
+	  			 atualizarTabelaReceitas();
+	  			 //desativa a animacao
+				 $('#loading').css("display","none");
+		  	}).fail(function(data) {
+	  
+			    console.log("erro ao atualizar "+data.responseJSON.mensagem);
+	  
+				//desativa a animacao
+				 $('#loading').css("display","none");
+		});
+};
 //cadatra uma receita no servidor e carrega na memoria
 function cadastrarReceita(){
-	var params= {};
-	params.id = getCookie("id");
-	params.descricao = $( "#receita-descricao" ).val();
-	params.valor = $( "#receita-valor" ).val();
-	params.data = $( "#receita-data" ).val();
-	params.categoria = $( "#receita-categoria" ).val();
+	if(receitaSelecionada.id != undefined){
+		atualizarReceita();
+	}else{
+		var params= {};
+		params.id = getCookie("id");
+		params.descricao = $( "#receita-descricao" ).val();
+		params.valor = $( "#receita-valor" ).val();
+		params.data = $( "#receita-data" ).val();
+		params.categoria = $( "#receita-categoria" ).val();
 
-	//requisicao POST
-	$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
-		data: params.data,tipo:"receita" })
-  		.done(function( data ) {
-   		     //salvo no banco com sucesso
-  			 //atualiza o array local de receitas
-  			 $( "#cad-receita" ).css( "display", "none" ); 
-        	 $( "#block" ).css( "display", "none" ); 
-        	 detalharReceitas();
-        	 desSelecionarReceita();
-  			 window.receitas.push(data);
-  			 atualizarTabelaReceitas();
-	  	}).fail(function(data) {
-  
-		    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
-  
-			
-	});
+
+		//inicia a animacao de loading
+		$('#loading').css("display","block");
+
+		//requisicao POST
+		$.post( "https://cffbackend.herokuapp.com/conta", { dono: params.id, descricao: params.descricao , valor: params.valor,
+			data: params.data,tipo:"receita" })
+	  		.done(function( data ) {
+	   		     //salvo no banco com sucesso
+	  			 //atualiza o array local de receitas
+	  			 $( "#cad-receita" ).css( "display", "none" ); 
+	        	 $( "#block" ).css( "display", "none" ); 
+	        	 detalharReceitas();
+	        	 desSelecionarReceita();
+	  			 window.receitas.push(data);
+	  			 atualizarTabelaReceitas();
+	  			 //desativa a animacao
+				 $('#loading').css("display","none");
+		  	}).fail(function(data) {
+	  
+			    console.log("erro ao cadastrar "+data.responseJSON.mensagem);
+	  
+				//desativa a animacao
+				 $('#loading').css("display","none");
+		});
+	}
+	
 
 };
 
@@ -124,7 +186,12 @@ function desSelecionarReceita(){
 //seleciona uma linha na tabela de receitas
 function selecionarReceita(row){
 	desSelecionarReceita();
-	receitaSelecionada.id = row.firstChild.firstChild;
+	receitaSelecionada.id = row.children[0].firstChild;
+	receitaSelecionada.descricao = row.children[1].firstChild;
+	receitaSelecionada.data = row.children[2].firstChild;
+	receitaSelecionada.valor = row.children[3].firstChild;
+	console.log(receitaSelecionada.descricao);
+
 	row.className += " selecionado"; 
 	$( "#botao-editar-receitas").css( "display", "inline-block" );  
     $( "#botao-excluir-receitas").css( "display", "inline-block" ); 

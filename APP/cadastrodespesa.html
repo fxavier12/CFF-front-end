@@ -1,0 +1,66 @@
+
+<!--cadastro de despesas -->
+<div class="pop-up" id="cad-despesa" >
+   <h2>Cadastro de despesa</h2>
+   <form onsubmit="return false">
+      <div class="form-item">
+         <div class="form-item interno">
+           <p>Descricao:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="text"  id= "despesa-descricao" placeholder="descricao" required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Valor:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="number"  id= "despesa-valor" placeholder="0.00" required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Vencimento:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="date"  id= "despesa-data"    required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Categoria:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <select  id="despesa-categoria">
+                  <option value="Moradia">Moradia</option>
+                  <option value="Lazer">Lazer</option>
+                  <option value="Saude">Saude</option>
+                  <option value="Formacao">Formacao</option>
+               </select>
+            </div>
+         </div>
+         <br>
+         <div class="form-item">
+            <div class="form-item interno">
+               <input type="submit" class="btn-entrar" onclick="cadastrarDespesa()"  value="Salvar">    </input>
+            </div>
+         </div>
+         <div class="form-item">
+            <div class="form-item interno">
+               <input type="button" onclick="$('#block').css('display','none');desSelecionarDespesa();" class="btn-entrar" value="Voltar">    </input>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+<script src="JS/despesas.js"></script>
+<script type="text/javascript">
+   if(despesaSelecionada.id != undefined){
+       $('#despesa-descricao').val(despesaSelecionada.descricao.textContent);
+      $('#despesa-data').val(despesaSelecionada.data.textContent.split(' ').join(''));
+      $('#despesa-valor').val(parseFloat(despesaSelecionada.valor.textContent));
+   } 
+
+</script>

@@ -1,0 +1,66 @@
+<!--cadastro de Receitas -->
+<div class="pop-up" id="cad-receita" >
+   <h2>Cadastro de Receita</h2>
+   <form onsubmit="return false">
+      <div class="form-item">
+         <div class="form-item interno">
+           <p>Descricao:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="text"  id= "receita-descricao" placeholder="descricao" required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Valor:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="number"  id= "receita-valor" placeholder="0.00" required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Data:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <input type="date"  id= "receita-data" placeholder="?" required/>
+            </div>
+         </div>
+         <div class="form-item interno">
+           <p>Categoria:</p>
+         </div>
+         <div class="form-item interno">
+            <div class="inputclass">
+               <select  id="receita-categoria">
+                  <option value="Moradia">Moradia</option>
+                  <option value="Lazer">Lazer</option>
+                  <option value="Saude">Saude</option>
+                  <option value="Formacao">Formacao</option>
+               </select>
+            </div>
+         </div>
+         <br>
+         <div class="form-item">
+            <div class="form-item interno">
+               <input type="submit" class="btn-entrar" onclick="cadastrarReceita()"  value="Salvar">    </input>
+            </div>
+         </div>
+         <div class="form-item">
+            <div class="form-item interno">
+               <input type="button" onclick="$('#block').css('display','none');" class="btn-entrar" value="Voltar">    </input>
+            </div>
+         </div>
+      </div>
+   </form>
+</div>
+ <script src="JS/receitas.js"></script>
+ <script type="text/javascript">
+   if(receitaSelecionada.id != undefined){
+      $('#receita-descricao').val(receitaSelecionada.descricao.textContent);
+      $('#receita-data').val(receitaSelecionada.data.textContent.split(' ').join(''));
+      $('#receita-valor').val(parseFloat(receitaSelecionada.valor.textContent));
+   } 
+
+</script>
+     

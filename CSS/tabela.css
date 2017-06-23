@@ -2,7 +2,8 @@
 .tabela{
     border-collapse: collapse;
     width: 100%;
-    color: #9e9e9e;
+    color: var(--primaria-forte);
+
 }
 	
 .table-row-despesas{
@@ -11,7 +12,7 @@
 .table-row-receitas{
 }
 .tabela th, td {
-   color: white;
+    color: white;
     padding: 12px;
 
 }
@@ -29,16 +30,20 @@
 	background-color:   var(--secundaria-forte);
 }
 .tabela tr{
-	background-color: var(--secundaria-fraca);
+	background-color: var(--principal-fraca);
 }
 
 .tabela tr.selecionado {
-	background-color: var(--secundaria-forte);
+	background-color: var(--principal-forte) !important;
+}
+
+.tabela tbody{
+	cursor:pointer;
 }
 
 .tabela tfoot tr{
 	background-color: var(--secundaria-forte);
 }
 .tabela tr:nth-child(even){
-	background-color: var(--secundaria-media);
+	background-color: var(--principal-media);
 }

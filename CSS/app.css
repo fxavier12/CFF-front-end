@@ -1,7 +1,7 @@
 /*define o estilo da pagina app.html*/
 #botao-esconder-despesas, #botao-excluir-despesas,#botao-editar-despesas,#botao-excluir-receitas,
 #botao-editar-receitas,#botao-esconder-receitas,#botao-desfazer-receitas,#botao-desfazer-despesas,
-#cad-receita,#cad-despesa,.absolute,#grafico,#semgrafico,#block{
+.absolute,#grafico,#semgrafico,#block{
   display: none;
 }
 
@@ -9,7 +9,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,1);
+  background-color: rgba(0,0,0,0.6);
   z-index: 3;
 }
 .pop-up {
@@ -20,6 +20,6 @@
   position: absolute;
   top: 30%;
   left: 30%;
-  z-index: 5;
+  z-index: 1;
 }
 

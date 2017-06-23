@@ -5,9 +5,16 @@
       <link rel="stylesheet" type="text/css" href="CSS/formularios.css">
       <link rel="stylesheet" type="text/css" href="CSS/index.css">
       <link rel="stylesheet" type="text/css" href="CSS/header.css">
+      <link rel="stylesheet" type="text/css" href="CSS/rodape.css">
       <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
+      <link rel="stylesheet" type="text/css" href="CSS/botoes.css">
+
+      <link rel="stylesheet" type="text/css" href="CSS/loading.css">
+
       <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
       <script src="JS/index.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Antic+Slab" rel="stylesheet">
+
    </head>
    <body>
       <div class="header">
@@ -17,14 +24,28 @@
       <br>
 
       <div class="conteudo" id="homearea" >
+          <!--loading-->
+          <div id="loading">
+            <div class="blockG" id="rotateG_01"></div>
+            <div class="blockG" id="rotateG_02"></div>
+            <div class="blockG" id="rotateG_03"></div>
+            <div class="blockG" id="rotateG_04"></div>
+            <div class="blockG" id="rotateG_05"></div>
+            <div class="blockG" id="rotateG_06"></div>
+            <div class="blockG" id="rotateG_07"></div>
+            <div class="blockG" id="rotateG_08"></div>
+         </div>
          <div class="homepage" id="home" >
-              <h1>Controle suas financas</h1>
-              <p>Imagens</p>
-              <p>Oque o sistema faz</p>
-              <p>Oque o sistema faz</p>
-              <p>Oque o sistema faz</p>
-              <h2>Baixe agora ou Utilize Online</h2>
-              <p>Links e botoes para cadastro</p>
+
+
+
+              <h1>Tenha o controle  simples das suas financias</h1>
+              <p>registre sua renda</p>
+              <p>registre suas despesas</p>
+              <p>controle o seu saldo atual</p>
+              <p>visualize suas financas em forma de graficos</p>
+              <p>poupe o seu tempo e dinheiro!</p>
+              <p>E GRATIS!!!</p>
          </div>
          <div class="formulario login" id="login">
             <form onsubmit="return false" >
@@ -73,9 +94,6 @@
          </div>
          <div class="formulario registro" id ="registro">
             <form  onsubmit="return false">
-               <div class="logotipo">
-               </div>
-               <h1>Controle Financeiro Facil</h1>
                <p><b>Cadastre-se</b></p>
                <div class="form-item">
                   <div class="form-item interno">
@@ -136,9 +154,6 @@
          </div>
          <div class="formulario recuperar" id="recuperar">
             <form onsubmit="return false">
-               <div class="logotipo">
-               </div>
-               <h1>Controle Financeiro Facil</h1>
                <p><b>Recupere sua senha</b></p>
                <p class="paragrafo">Vamos enviar sua nova senha por email</p>
                <p class="paragrafo">Altere sua senha na guia configuracoes</p>
@@ -171,9 +186,6 @@
          </div>
          <div class="formulario sucesso " id="sucesso">
             <form onsubmit="return false">
-               <div class="logotipo">
-               </div>
-               <h1>Controle Financeiro Facil</h1>
                <p><b>Conta criada com sucesso</b></p>
                <p class="paragrafo">Seja bem vindo!</p>
                <p class="paragrafo">enviamos um email pra     voce</p>
@@ -184,6 +196,10 @@
                </div>
             </form>
          </div>
+      </div>
+      <div class="rodape">
+         <p>Sistema de Financa Facil - 2017</p>
+         <p>Powered by Francisco Xavier </p>
       </div>
    </body>
 </html>
