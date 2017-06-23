@@ -1,0 +1,62 @@
+/*define o estilo do header da aplicacao*/
+.caixaMeio{
+  display: inline-grid;
+  width: 306px;
+  height: 244px;
+  margin: 16px 0px 0px 0px;
+  /** background-color:  var(--principal-forte); **/
+}
+
+.caixaMeio p {
+    text-align: center;
+    font-size: 20px;
+}
+
+.caixaMeio h3 {
+  color: blue;
+}
+
+.teste{
+  height: 0px;
+}
+
+.teste img{
+  height: 100px;
+}
+.foto{
+  height: 144px;
+}
+
+/***********************/
+.caixaExplica{
+  height: 360px;
+  width: 100%;
+  display: inline;
+}
+
+.caixaExplica img{
+  height: 360px;
+}
+
+.caixaExplica h3{
+  color: blue;
+  text-align: justify;
+}
+
+.caixaExplicaDentro{
+  height: auto;
+  width: 44%;
+  margin: 45px 0px 0px 0px;
+}
+
+.posicao{
+  float: right;
+  display: inline-block;
+}
+.posicao h1{
+  text-align: justify;
+}
+
+.posicao2{
+  float: left;
+}

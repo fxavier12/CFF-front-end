@@ -1,6 +1,8 @@
 <html>
    <head>
       <meta charset="utf-8"/>
+      <title>Controle Finaçeiro</title>
+      <link rel="shortcut icon" href="media/controle.png">
       <link rel="stylesheet" type="text/css" href="CSS/colors.css">
       <link rel="stylesheet" type="text/css" href="CSS/formularios.css">
       <link rel="stylesheet" type="text/css" href="CSS/index.css">
@@ -8,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="CSS/rodape.css">
       <link rel="stylesheet" type="text/css" href="CSS/estilo.css">
       <link rel="stylesheet" type="text/css" href="CSS/botoes.css">
+      <link rel="stylesheet" type="text/css" href="CSS/formas.css"
 
       <link rel="stylesheet" type="text/css" href="CSS/loading.css">
 
@@ -18,6 +21,9 @@
    </head>
    <body>
       <div class="header">
+        <div class="teste">
+            <img class="foto" src="media/controle.png" alt="new!">
+        </div>
          <h1>Sistema de finança fácil</h1>
          <button onclick="abrirLogin()" class="btn-login">Login</button">
       </div>
@@ -37,16 +43,54 @@
          </div>
          <div class="homepage" id="home" >
 
-
-
               <h1>Tenha o controle  simples das suas financias</h1>
-              <p>registre sua renda</p>
-              <p>registre suas despesas</p>
-              <p>controle o seu saldo atual</p>
-              <p>visualize suas financas em forma de graficos</p>
-              <p>poupe o seu tempo e dinheiro!</p>
-              <p>E GRATIS!!!</p>
+
+
+              <div class="caixaMeio" >
+                   <img class="foto" src="media/ilustra-fluxo-caixa.png" alt="new!">
+                   <h3>Fluxo de caixa</h3>
+              </div>
+
+              <div class="caixaMeio" >
+                  <img class="foto" src="media/ilustra-contas.png" alt="new!">
+                  <h3>Contas a pagar e receber</h3>
+              </div>
+
+              <div class="caixaMeio" >
+                  <img class="foto" src="media/ilustra-planejamento.png" alt="new!">
+                  <h3>Controle o seu saldo atual</h3>
+              </div>
+
+              <div class="caixaMeio" >
+                  <img class="foto" src="media/ilustra-relatorios.png" alt="new!">
+                  <h3>visualize suas financas em forma de graficos</h3>
+              </div>
+
+              <div class="caixaMeio" >
+                  <img class="foto" src="media/func2.jpeg" alt="new!">
+                  <h3>Planejamento Financeiro</h3>
+              </div>
+              <div class="caixaMeio" >
+                  <img class="foto" src="media/func1.jpeg" alt="new!">
+                  <h3>Saiba para onde vai seu dinheiro</h3>
+              </div>
+
+              <div class="caixaExplica">
+                <div class="caixaExplicaDentro posicao2">
+                  <img src="media/ondeqiser.png" alt="new!">
+                </div>
+                <div class="caixaExplicaDentro posicao">
+                  <h1>Em qualquer lugar a qualquer momento </h1>
+                  <h3>Controle de Finança Fácil é um aplicativo de controle financeiro pessoal que permite que você cadastre suas despesas e receitas, podendo ser acessado pelo computador, tablet ou smartphone.</h3><br>
+                  <h2>poupe o seu tempo e dinheiro!</h2>
+                  <p>E GRATIS!!!</p>
+                </div>
+              </div>
+              <div class="caixaMeio">
+
+              </div>
          </div>
+
          <div class="formulario login" id="login">
             <form onsubmit="return false" >
                <div class="logotipo">
@@ -65,7 +109,7 @@
                      <div class="inputclass">
                         <input type="email"  id= "email" placeholder="exemplo@seuemail.com" required/>
                      </div>
-                     <div class="alert" id="emailalert">      
+                     <div class="alert" id="emailalert">
                      </div>
                   </div>
                </div>
