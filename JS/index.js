@@ -57,7 +57,7 @@ function cadastrar(){
 				   		       $( "#registro" ).css( "display", "none" );
                      $( "#sucesso" ).css( "display", "block" );
                       //para a animacao de loading
-                      $('#loading').css("display","block");
+                      $('#loading').css("display","none");
 					  	}).fail(function(data) {
                   
                       $( "#reqemailalert" ).css( "display", "block" );
@@ -65,7 +65,7 @@ function cadastrar(){
                       $( "#reqemailalert" ).append(data.responseJSON.mensagem );
                       $( "#reqemailalert" ).append("<span class ='closebtn' onclick='closealert()' >&times;</span>");
                       //para a animacao de loading
-                      $('#loading').css("display","block");
+                      $('#loading').css("display","none");
 							
 		  			});
   
