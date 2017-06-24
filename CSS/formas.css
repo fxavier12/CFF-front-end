@@ -1,6 +1,6 @@
 /*define o estilo do header da aplicacao*/
 .caixaMeio{
-  display: inline-grid;
+  display: inline-block;
   width: 306px;
   height: 244px;
   margin: 16px 0px 0px 0px;
